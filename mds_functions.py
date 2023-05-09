@@ -121,7 +121,7 @@ def table_names(array):
     remove_nan = [x for x in array if str(x) != 'nan']
     table_names = []
     for name in remove_nan:
-        if name == 'audit_code' or name == 'audit_infotype' or name == 'nric_uuid_main':
+        if name == 'audit_code' or name == 'audit_infotype' or name == 'nric_uuid_main' or name == 'it_main':
             table_names.append(name)
         elif name.split('_')[0] == 'cd':
             name = name.replace('_', '')
