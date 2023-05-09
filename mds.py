@@ -7,7 +7,7 @@ excelsheet_info = pd.read_excel(sf.get_excel_path(), 'MDS')
 
 template_id_array = mf.mds_array(excelsheet_info, 'Template ID')
 template_array = mf.mds_array(excelsheet_info, 'Template')
-template_regex_array = mf.mds_array(excelsheet_info, "Template Query Parameter Values' RegEx")
+template_regex_array = mf.dynamic_values_array_of_arrays(template_array)
 
 table_name_column_array = mf.column_array(excelsheet_info, 'Table Name')
 table_names_array = mf.table_names(table_name_column_array)
