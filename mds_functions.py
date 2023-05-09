@@ -21,22 +21,25 @@ def mds_array(df, value):
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
                     output_str = output_str.replace('"${', '${').replace('}"', '}').replace("\n", "")
                     array.append(output_str)
-            elif row[i] == value and value == "Template Query Parameter Values' RegEx":
-                if str(row[i + 3]) == 'nan' or ':' not in row[i + 3]:
-                    output_str = '<placeholder>'
-                    array.append(output_str)
-                else:
-                    output_list = []
-                    item = row[i + 3].replace('\\', '\\\\\\\\').replace("\n", "")[1:-1].split(',')
-                    for pair in item:
-                        pair_list = []
-                        pair = pair.split(':')
-                        pair_list.append(pair[0].strip()[1:-1])
-                        pair_list.append(pair[-1].strip())
-                        output_list.append(pair_list)
-                    array.append(output_list)
             i += 1
     return array
+
+def dynamic_values_array_of_arrays(template_array):
+    dynamic_values_array_of_arrays = []
+
+    i = 0
+    while i < len(template_array):
+        dynamic_values_list = []
+        entry = template_array[i].split('${')
+        for lines in entry:
+            lines = lines.split('}')
+            for value in lines:
+                if len(value.split()) == 1 and re.search("^[A-Za-z0-9_]+$", value):
+                    dynamic_values_list.append(value)
+        dynamic_values_list = list(set(dynamic_values_list))
+        dynamic_values_array_of_arrays.append(dynamic_values_list)
+        i += 1
+    return dynamic_values_array_of_arrays
 
 def query_template_entry(i, template, template_id, app_name, template_regex):
     if template != "<placeholder>" and template != 'nric_uuid_template' and template != 'uuid_nric_template':
@@ -50,7 +53,7 @@ def query_template_entry(i, template, template_id, app_name, template_regex):
     appid: {app_name}
     paramValuesSchema:'''
 
-        if template_regex == "<placeholder>":
+        if template_regex == []:
             required = '''
     required: []'''
             yaml_entry += required
@@ -58,8 +61,8 @@ def query_template_entry(i, template, template_id, app_name, template_regex):
         else:
             for pair in template_regex:
                 pair_portion = f'''
-        {pair[0]}:
-            pattern: {pair[-1]}
+        {pair}:
+            pattern:
             type:'''
                 yaml_entry += pair_portion
 
@@ -69,7 +72,7 @@ def query_template_entry(i, template, template_id, app_name, template_regex):
 
             for pair in template_regex:
                 value_portion = f'''
-            - {pair[0]}'''
+            - {pair}'''
                 yaml_entry += value_portion
     
     else:
