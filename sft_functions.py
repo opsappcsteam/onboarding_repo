@@ -18,8 +18,11 @@ def sft_array(df, value):
                     output_str = row[i + 2]
                     array.append(output_str)
             elif row[i] == value and value == 'File Type':
-                if row[i + 1] == '(Select)' or row[i + 1] == 'image/jpg (.jpg)' or str(row[i + 1]) == 'nan':
+                if row[i + 1] == '(Select)' or str(row[i + 1]) == 'nan':
                     pass
+                elif row[i + 1] == 'image/jpg (.jpg)':
+                    output_str = 'image/jpeg'
+                    array.append(output_str)
                 else:
                     output_str = row[i + 1]
                     output_str = output_str.split(' ')[0]
