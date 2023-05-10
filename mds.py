@@ -12,7 +12,6 @@ template_regex_array = mf.dynamic_values_array_of_arrays(template_array)
 table_name_column_array = mf.column_array(excelsheet_info, 'Table Name')
 table_names_array = mf.table_names(table_name_column_array)
 field_column_array = mf.column_array(excelsheet_info, 'Field')
-field_column_array = list(filter(lambda x: x != 'nan', field_column_array))
 field_array_of_arrays = mf.field_array_of_arrays(table_name_column_array, field_column_array)
 
 query_template_content = mf.mds_query_template_yaml(template_array, template_id_array, app_name, template_regex_array)
