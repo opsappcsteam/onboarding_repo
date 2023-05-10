@@ -159,6 +159,7 @@ table:'''
 
     i = 0
     while i < len(table_names_array):
+        field_array_of_arrays[i] = list(filter(lambda x: x != 'nan', field_array_of_arrays[i]))
         field_array_of_arrays[i] = str(field_array_of_arrays[i]).replace("'", '')
         yaml_entry = f'''
 -   tablename: {table_names_array[i]}
