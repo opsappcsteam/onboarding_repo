@@ -151,8 +151,8 @@ def data_contract_yaml(app_name, table_names_array, field_array_of_arrays):
     yaml_file = f'''---
 role: [{app_name}]
 filter: {{
-    it0001_persg: [],
-    it0001_werks: []
+    it0001_persg: [], # e.g [A,B,C]
+    it0001_werks: []  # e.g ["0001","0002","0003"]
 }}
 
 table:'''
