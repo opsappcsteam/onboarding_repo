@@ -173,8 +173,8 @@ table:'''
     if yaml_file == f'''---
 role: [{app_name}]
 filter: {{
-    it0001_persg: [],
-    it0001_werks: []
+    it0001_persg: [], # e.g [A,B,C]
+    it0001_werks: []  # e.g ["0001","0002","0003"]
 }}
 
 table:''':
