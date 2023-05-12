@@ -19,7 +19,7 @@ def mds_array(df, value):
                 else:
                     input_str = row[i + 3]
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
-                    output_str = output_str.replace('"${', '${').replace('}"', '}').replace("\n", "")
+                    output_str = output_str.replace('"${', '${').replace('}"', '}').replace("\n", " ")
                     array.append(output_str)
             i += 1
     return array
