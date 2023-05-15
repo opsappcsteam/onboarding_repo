@@ -19,7 +19,8 @@ def mds_array(df, value):
                 else:
                     input_str = row[i + 3]
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
-                    output_str = output_str.replace('"${', '${').replace('}"', '}').replace("\n", " ")
+                    output_str = output_str.replace('"${', '${').replace('}"', '}').split("\n")
+                    output_str = ' '.join(line.lstrip() for line in output_str)
                     output_str = re.sub(r'(\$\{.*?\}|".*?")|([a-zA-Z_]+)', lambda match: match.group(1) if match.group(1) else match.group(2).lower(), output_str)
                     array.append(output_str)
             i += 1
