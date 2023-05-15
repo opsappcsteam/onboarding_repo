@@ -43,7 +43,7 @@ def dynamic_values_array_of_arrays(template_array):
     return dynamic_values_array_of_arrays
 
 def query_template_entry(i, template, template_id, app_name, template_regex):
-    if template_id == "<placeholder>" or template_id == 'nric_uuid_template' or template_id == 'uuid_nric_template':
+    if template_id == 'nric_uuid_template' or template_id == 'uuid_nric_template':
         yaml_entry = ''
     else:
         yaml_entry = f'''
@@ -84,7 +84,7 @@ def mds_query_template_yaml(template_array, template_id_array, app_name, templat
     yaml_file = '''---'''
     i = 0
     while i < len(template_array):
-        if template_id_array[i] == "<placeholder>" or template_id_array[i] == "nric_uuid_template" or template_id_array[i] == "uuid_nric_template":
+        if template_array[i] == "<placeholder>" or template_id_array[i] == "nric_uuid_template" or template_id_array[i] == "uuid_nric_template":
             yaml_file += ''
             i += 1
         else:
