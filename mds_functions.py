@@ -43,7 +43,9 @@ def dynamic_values_array_of_arrays(template_array):
     return dynamic_values_array_of_arrays
 
 def query_template_entry(i, template, template_id, app_name, template_regex):
-    if template != "<placeholder>" and template != 'nric_uuid_template' and template != 'uuid_nric_template':
+    if template_id == "<placeholder>" or template_id == 'nric_uuid_template' or template_id == 'uuid_nric_template':
+        yaml_entry = ''
+    else:
         yaml_entry = f'''
 
 # {i + 1}
@@ -76,22 +78,20 @@ def query_template_entry(i, template, template_id, app_name, template_regex):
             - {pair}'''
                 yaml_entry += value_portion
     
-    else:
-        yaml_entry = ''
-    
     return yaml_entry
 
 def mds_query_template_yaml(template_array, template_id_array, app_name, template_regex_array):
     yaml_file = '''---'''
     i = 0
     while i < len(template_array):
-        if template_array[i] != '<placeholder>':
+        if template_id_array[i] == "<placeholder>" or template_id_array[i] == "nric_uuid_template" or template_id_array[i] == "uuid_nric_template":
+            yaml_file += ''
+            i += 1
+        else:
             yaml_entry = query_template_entry(i, template_array[i], template_id_array[i], app_name, template_regex_array[i])
             yaml_file += yaml_entry
             i += 1
-        else:
-            yaml_file += ''
-            i += 1
+            
 
     if yaml_file == '''---''':
         return 0
@@ -109,7 +109,7 @@ def column_array(df, value):
             if row[i] == value:
                 start_index.append(index + 1)
                 column.append(i)
-            elif row[i] == '<Add more entries here if necessary>':
+            elif row[i] == 'Whitelisting Query Template (Stage 2)':
                 end_index.append(index)
             i += 1
     column_array = []
