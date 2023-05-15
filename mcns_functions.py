@@ -42,7 +42,8 @@ def mcns_array(df, value):
                 else:
                     input_str = row[i + 2]
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
-                    output_str = output_str.replace('"${', '${').replace('}"', '}').replace("\n", "")
+                    output_str = output_str.replace('"${', '${').replace('}"', '}').split("\n")
+                    output_str = ' '.join(line.lstrip() for line in output_str)
                     output_str = output_str.replace('"', '\\"')
                     array.append(output_str)
             elif row[i] == value and value == "Template Values' Regular Expression":
