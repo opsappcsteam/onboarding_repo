@@ -24,7 +24,7 @@ def mcns_array(df, value):
                     output_str = '<placeholder>'
                     array.append(output_str)
                 else:
-                    output_str = row[i + 2].lower().replace('sit.df-mcns.com', 'mcns.defence.gov.sg')
+                    output_str = row[i + 2].lower()
                     array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
