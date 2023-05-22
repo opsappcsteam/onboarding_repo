@@ -144,9 +144,6 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                     }},
                     "pkstatus": {{
                         "S": "true"
-                    }},
-                     "attachmentAllowed": {{
-                        "S": "true"
                     }}
                 }}
             }}
@@ -192,9 +189,6 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                         "S": "{regex_json}"
                     }},
                     "pkstatus": {{
-                        "S": "true"
-                    }},
-                     "attachmentAllowed": {{
                         "S": "true"
                     }}
                 }}
