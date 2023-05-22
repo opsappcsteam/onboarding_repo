@@ -1,11 +1,13 @@
-try:
-    from shared_functions import get_excel_name
+from shared_functions import get_excel_name
+from mcns import mcns_onboarding
+from sft import sft_onboarding
+
+excel_name = get_excel_name()
+if excel_name != None:
     print(f'Excel Detected: {get_excel_name()}')
-    env = input('What environment are you onboarding to? (sit/prod) : ')
-    from mcns import mcns_onboarding
+    env = input('What environment are you onboarding to? (sit/prod): ')
     mcns_onboarding(env)
     import mds
-    from sft import sft_onboarding
     sft_onboarding(env)
-except ValueError:
-    print('No Excel File Found!')
+else:
+    print('No Excel Detected')
