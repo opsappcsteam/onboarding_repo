@@ -259,9 +259,10 @@ def mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array
         return json_file
 
 def mcns_config_entry(app_name, template_id, sender, channel_type):
+    channel_type = channel_type.lower()
     if template_id == '<placeholder>':
         template_id = channel_type.lower() + '<uuid>'
-    if channel_type == 'Email':
+    if channel_type == 'email':
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
@@ -278,7 +279,7 @@ def mcns_config_entry(app_name, template_id, sender, channel_type):
                 }}
             }}
         }}'''
-    elif channel_type == 'SMS':
+    elif channel_type == 'sms':
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
@@ -298,7 +299,7 @@ def mcns_config_entry(app_name, template_id, sender, channel_type):
                 }}
             }}
         }}'''
-    elif channel_type == 'Push':
+    elif channel_type == 'push':
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
