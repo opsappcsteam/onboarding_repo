@@ -1,6 +1,6 @@
 import re
 
-def mcns_array(df, value):
+def mcns_array(df, value, env):
     array = []
     for index, row in df.iterrows():
         i = 0
@@ -20,12 +20,20 @@ def mcns_array(df, value):
                     output_str = row[i + 2]
                     array.append(output_str)
             elif row[i] == value and value == 'Sender':
-                if str(row[i + 2]) == 'nan':
-                    output_str = '<placeholder>'
-                    array.append(output_str)
-                else:
-                    output_str = row[i + 2].lower()
-                    array.append(output_str)
+                if env == 'sit':
+                    if str(row[i + 2]) == 'nan':
+                        output_str = '<placeholder>'
+                        array.append(output_str)
+                    else:
+                        output_str = row[i + 2].lower() + '@sit.df-mcns.com'
+                        array.append(output_str)
+                elif env == 'sit':
+                    if str(row[i + 2]) == 'nan':
+                        output_str = '<placeholder>'
+                        array.append(output_str)
+                    else:
+                        output_str = row[i + 2].lower() + '@mcns.defence.gov.sg'
+                        array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
                     output_str = '<placeholder>'
@@ -57,6 +65,7 @@ def mcns_array(df, value):
     return array
 
 def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_values, regex_json):
+    channel_type = channel_type.lower()
     if template_id == '<placeholder>':
         template_id = channel_type.lower() + '<uuid>'
     if regex_json == '<placeholder>':
@@ -70,7 +79,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
     properties = str(properties)[1:-1]
     properties = str(properties).replace("'", '').replace("[", "").replace("]", "").replace('\\"','\"')
 
-    if channel_type == 'Email' and regex_json != '':
+    if channel_type == 'email' and regex_json != '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -99,7 +108,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                 }}
             }}
         }}'''
-    elif channel_type == 'Email' and regex_json == '':
+    elif channel_type == 'email' and regex_json == '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -122,7 +131,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                 }}
             }}
         }}'''
-    elif channel_type == 'SMS' and regex_json != '':
+    elif channel_type == 'sms' and regex_json != '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -148,7 +157,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                 }}
             }}
         }}'''
-    elif channel_type == 'SMS' and regex_json == '':
+    elif channel_type == 'sms' and regex_json == '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -168,7 +177,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                 }}
             }}
         }}'''
-    elif channel_type == 'Push' and regex_json != '':
+    elif channel_type == 'push' and regex_json != '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -194,7 +203,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
                 }}
             }}
         }}'''
-    elif channel_type == 'Push' and regex_json == '':
+    elif channel_type == 'push' and regex_json == '':
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
