@@ -110,7 +110,7 @@ def column_array(df, value):
             if row[i] == value:
                 start_index.append(index + 1)
                 column.append(i)
-            elif row[i] == 'Whitelisting Query Template (Stage 2)':
+            elif row[i] == 'Whitelisting Query Template (Stage 2)' or row[i] == '<Add more entries here if necessary>': 
                 end_index.append(index)
             i += 1
     column_array = []
