@@ -76,7 +76,7 @@ def query_template_entry(i, template, template_id, app_name, template_regex):
 
             for pair in template_regex:
                 value_portion = f'''
-            - {pair}'''
+        - {pair}'''
                 yaml_entry += value_portion
     
     return yaml_entry
