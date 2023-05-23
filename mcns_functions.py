@@ -27,7 +27,7 @@ def mcns_array(df, value, env):
                     else:
                         output_str = row[i + 2].lower() + '@sit.df-mcns.com'
                         array.append(output_str)
-                elif env == 'sit':
+                elif env == 'prod':
                     if str(row[i + 2]) == 'nan':
                         output_str = '<placeholder>'
                         array.append(output_str)
