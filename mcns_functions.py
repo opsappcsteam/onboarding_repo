@@ -60,8 +60,8 @@ def mcns_array(df, value, env):
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
                     output_str = output_str.replace('"${', '${').replace('}"', '}').split("\n")
                     output_str = ' '.join(line.lstrip() for line in output_str)
-                    output_str = repr(output_str).replace(r'\t', '    ')
-                    output_str = output_str.replace(r'"', r'\"').replace("'", '"')[1:-1]
+                    output_str = output_str.replace('\t', '    ')
+                    output_str = output_str.replace("'", '"').replace(r'"', r'\"')
                     array.append(output_str)
             elif row[i] == value and value == "Template Values' Regular Expression":
                 if str(row[i + 2]) == 'nan':
