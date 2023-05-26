@@ -25,15 +25,23 @@ def mcns_array(df, value, env):
                         output_str = '<placeholder>'
                         array.append(output_str)
                     else:
-                        output_str = row[i + 2].lower() + '@sit.df-mcns.com'
-                        array.append(output_str)
+                        output_str = row[i + 2]
+                        if '@sit.df-mcns.com' in output_str:
+                            array.append(output_str)
+                        else:
+                            output_str = row[i + 2].lower() + '@sit.df-mcns.com'
+                            array.append(output_str)
                 elif env == 'prod':
                     if str(row[i + 2]) == 'nan':
                         output_str = '<placeholder>'
                         array.append(output_str)
                     else:
-                        output_str = row[i + 2].lower() + '@mcns.defence.gov.sg'
-                        array.append(output_str)
+                        output_str = row[i + 2]
+                        if '@mcns.defence.gov.sg' in output_str:
+                            array.append(output_str)
+                        else:
+                            output_str = row[i + 2].lower() + '@mcns.defence.gov.sg'
+                            array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
                     output_str = '<placeholder>'
