@@ -26,7 +26,9 @@ def mcns_array(df, value, env):
                         array.append(output_str)
                     else:
                         output_str = row[i + 2]
-                        if '@sit.df-mcns.com' in output_str:
+                        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        valid_email = re.findall(email_pattern, output_str)
+                        if valid_email !=  []:
                             array.append(output_str)
                         else:
                             output_str = row[i + 2].lower() + '@sit.df-mcns.com'
@@ -37,10 +39,12 @@ def mcns_array(df, value, env):
                         array.append(output_str)
                     else:
                         output_str = row[i + 2]
-                        if '@mcns.defence.gov.sg' in output_str:
+                        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        valid_email = re.findall(email_pattern, output_str)
+                        if valid_email !=  []:
                             array.append(output_str)
                         else:
-                            output_str = row[i + 2].lower() + '@mcns.defence.gov.sg'
+                            output_str = row[i + 2].lower() + 'mcns.defence.gov.sg'
                             array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
