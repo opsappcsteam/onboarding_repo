@@ -1,6 +1,6 @@
 import pandas as pd
-import shared_functions as sf
-import mcns_functions as mf
+import Services.shared_functions as sf
+import Services.MCNS.mcns_functions as mf
 
 def mcns_onboarding(env):
   app_name = sf.get_excel_name()
