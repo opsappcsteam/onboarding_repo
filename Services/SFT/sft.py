@@ -1,6 +1,6 @@
 import pandas as pd
-import shared_functions as sf
-import sft_functions as sfs
+import Services.shared_functions as sf
+import Services.SFT.sft_functions as sfs
 
 def sft_onboarding(env):
   app_name = sf.get_excel_name()
