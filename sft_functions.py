@@ -58,7 +58,7 @@ def sft_entry(app_name, file_type, sns_callback, http_callback):
                     "pkstatus": {{
                         "S": "true"
                     }},
-                    "http_callback": {{
+                    "httpCallback": {{
                         "S": "{http_callback}"
                     }}
                 }}
@@ -92,7 +92,7 @@ def sft_entry(app_name, file_type, sns_callback, http_callback):
                     "pkstatus": {{
                         "S": "true"
                     }},
-                    "http_callback": {{
+                    "httpCallback": {{
                         "S": "{http_callback}"
                     }},
                     "callback": {{
