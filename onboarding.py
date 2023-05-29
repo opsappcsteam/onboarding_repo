@@ -6,9 +6,8 @@ from Services.SFT.sft import sft_onboarding
 excel_name = get_excel_name()
 if excel_name != None:
     print(f'Excel Detected: {get_excel_name()}')
-    print('Ensure input is in lowercase!')
     try:
-        env = input('What environment are you onboarding to? (sit/prod): ')
+        env = input('What environment are you onboarding to? (sit/prod): ').lower()
         mcns_onboarding(env)
         mds_onboarding()
         sft_onboarding(env)
