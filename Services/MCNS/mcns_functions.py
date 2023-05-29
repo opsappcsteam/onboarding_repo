@@ -26,26 +26,14 @@ def mcns_array(df, value, env):
                         array.append(output_str)
                     else:
                         output_str = row[i + 2]
-                        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                        valid_email = re.findall(email_pattern, output_str)
-                        if valid_email !=  []:
-                            array.append(output_str)
-                        else:
-                            output_str = row[i + 2].lower() + '@sit.df-mcns.com'
-                            array.append(output_str)
+                        array.append(output_str)
                 elif env == 'prod':
                     if str(row[i + 2]) == 'nan':
                         output_str = '<placeholder>'
                         array.append(output_str)
                     else:
                         output_str = row[i + 2]
-                        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                        valid_email = re.findall(email_pattern, output_str)
-                        if valid_email !=  []:
-                            array.append(output_str)
-                        else:
-                            output_str = row[i + 2].lower() + 'mcns.defence.gov.sg'
-                            array.append(output_str)
+                        array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
                     output_str = '<placeholder>'
@@ -77,7 +65,7 @@ def mcns_array(df, value, env):
             i += 1
     return array
 
-def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_values, regex_json):
+def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_values, regex_json, env):
     channel_type = channel_type.lower()
     if template_id == '<placeholder>':
         template_id = channel_type.lower() + '<uuid>'
@@ -93,6 +81,13 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
     properties = str(properties).replace("'", '').replace("[", "").replace("]", "").replace('\\"','\"')
 
     if channel_type == 'email' and regex_json != '':
+        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        valid_email = re.findall(email_pattern, sender)
+        if valid_email ==  [] and env == 'sit':
+            sender = sender + '@sit.df-mcns.com'
+        elif valid_email == [] and env == 'prod':
+            sender = sender + '@mcns.defence.gov.sg'
+            
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -122,6 +117,13 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
             }}
         }}'''
     elif channel_type == 'email' and regex_json == '':
+        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        valid_email = re.findall(pattern, sender)
+        if valid_email ==  [] and env == 'sit':
+            sender = sender + '@sit.df-mcns.com'
+        elif valid_email == [] and env == 'prod':
+            sender = sender + '@mcns.defence.gov.sg'
+
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -250,10 +252,10 @@ def mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array
     while i < len(template_array):
         if template_array[i] != '<placeholder>':
             if i != len(template_array) - 1: 
-                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i])
+                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i], env)
                 json_file += json_auth_entry + ','
             else:
-                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i])
+                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i], env)
                 json_file += json_auth_entry
             i += 1
         else:
