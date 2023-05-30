@@ -118,7 +118,7 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
         }}'''
     elif channel_type == 'email' and regex_json == '':
         email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-        valid_email = re.findall(pattern, sender)
+        valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
             sender = sender + '@sit.df-mcns.com'
         elif valid_email == [] and env == 'prod':
