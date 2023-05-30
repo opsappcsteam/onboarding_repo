@@ -2,10 +2,13 @@ import pandas as pd
 import Services.shared_functions as sf
 import Services.MDS.mds_functions as mf
 
-def mds_onboarding():
+def mds_onboarding(version):
     app_name = sf.get_excel_name()
-    excelsheet_info = pd.read_excel(sf.get_excel_path(), 'MDS')
-
+    if version == '1':
+        excelsheet_info = pd.read_excel(sf.get_excel_path(), 'MDS')
+    elif version == '2':
+        excelsheet_info = pd.read_excel(sf.get_excel_path(), 'MPDS')
+        
     template_id_array = mf.mds_array(excelsheet_info, 'Template ID')
     template_array = mf.mds_array(excelsheet_info, 'Template')
     template_regex_array = mf.dynamic_values_array_of_arrays(template_array)
