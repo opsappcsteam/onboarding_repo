@@ -1,4 +1,5 @@
 import re
+import uuid
 
 def mcns_array(df, value, env):
     array = []
@@ -7,7 +8,8 @@ def mcns_array(df, value, env):
         while i < len(df.columns):
             if row[i] == value and value == 'Template ID':
                 if row[i + 2] == '<This will be filled up by AppCS Onboarding Team>' or str(row[i + 2]) == 'nan':
-                    output_str = '<placeholder>'
+                    new_uuid = str(uuid.uuid4()).replace('-', '')
+                    output_str = '<placeholder>' + new_uuid
                     array.append(output_str)
                 else:
                     output_str = row[i + 2]
@@ -67,8 +69,8 @@ def mcns_array(df, value, env):
 
 def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_values, regex_json, env):
     channel_type = channel_type.lower()
-    if template_id == '<placeholder>':
-        template_id = channel_type.lower() + '<uuid>'
+    if '<placeholder>' in template_id:
+        template_id = template_id.replace('<placeholder>', channel_type)
     if regex_json == '<placeholder>':
         regex_json = ''
     
@@ -275,8 +277,8 @@ def mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array
 
 def mcns_config_entry(app_name, template_id, sender, channel_type):
     channel_type = channel_type.lower()
-    if template_id == '<placeholder>':
-        template_id = channel_type.lower() + '<uuid>'
+    if '<placeholder>' in template_id:
+        template_id = template_id.replace('<placeholder>', channel_type)
     if channel_type == 'email':
         mcns_config_entry = f'''
         {{
@@ -336,7 +338,7 @@ def mcns_config_entry(app_name, template_id, sender, channel_type):
 
     return mcns_config_entry
 
-def mcns_config_json(app_name, template_id_array, sender_array, channel_type_array, env):
+def mcns_config_json(app_name, template_id_array, sender_array, channel_type_array, template_array, env):
     json_file = f'''{{
     "mcns-configuration-{env}": ['''
     json_footer = '''
@@ -344,8 +346,8 @@ def mcns_config_json(app_name, template_id_array, sender_array, channel_type_arr
 }'''
 
     i = 0
-    while i < len(channel_type_array):
-        if channel_type_array[i] != '<placeholder>':
+    while i < len(template_array):
+        if template_array[i] != '<placeholder>':
             if i != len(channel_type_array) - 1: 
                 json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i])
                 json_file += json_config_entry + ','
