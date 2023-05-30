@@ -15,7 +15,7 @@ def mcns_onboarding(env):
   template_regex_array = mf.mcns_array(excelsheet_info, "Template Values' Regular Expression", env)
 
   mcns_auth_content = mf.mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array, subject_array, template_array, dynamic_values_array, template_regex_array, env)
-  mcns_config_content = mf.mcns_config_json(app_name, template_id_array, sender_array, channel_type_array, env)
+  mcns_config_content = mf.mcns_config_json(app_name, template_id_array, sender_array, channel_type_array, template_array, env)
 
   mcns_auth_json = sf.file_generation(app_name, 'mcns_authorizer', mcns_auth_content, '.json')
   mcns_config_json = sf.file_generation(app_name, 'mcns_configuration', mcns_config_content, '.json')
