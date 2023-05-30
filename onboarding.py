@@ -14,5 +14,7 @@ if excel_name != None:
         sft_onboarding(env)
     except IndexError:
         print('Enter a valid environment name; Run the program again!')
+    except UnboundLocalError:
+        print('Enter the right onboarding version; Run the program again!')
 else:
     print('No Excel Detected')
