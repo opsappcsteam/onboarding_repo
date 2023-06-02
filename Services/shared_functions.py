@@ -26,21 +26,18 @@ def dynamic_values_array(subject_array, template_array):
             template_matches = re.findall(r'\${(.*?)}', template_array[i])
             for value in template_matches:
                 array.append(value)
-            array = set(array)
-            array = list(array)
+            array = list(set(array))
             dynamic_values_array.append(array)
             i += 1  
     else:
         while i < len(subject_array):
             array = []
             subject_matches = re.findall(r'\${(.*?)}', subject_array[i])
-            for value in subject_matches:
-                array.append(value)
             template_matches = re.findall(r'\${(.*?)}', template_array[i])
-            for value in template_matches:
+            total_matches = subject_matches + template_matches
+            for value in total_matches:
                 array.append(value)
-            array = set(array)
-            array = list(array)
+            array = list(set(array))
             dynamic_values_array.append(array)
             i += 1
     return dynamic_values_array
@@ -55,4 +52,4 @@ def file_generation(app_name, file_name, file_content, extension):
         txt_file = os.path.join('./Artifacts/', f'{app_name}-{file_name}.txt')
         output_file = txt_file.replace('.txt', extension)
         os.rename(txt_file, output_file)
-        print(f'{file_name}: File Generation Completed')        
+        print(f'{file_name}: File Generation Completed')
