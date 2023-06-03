@@ -253,12 +253,12 @@ def mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array
     i = 0
     while i < len(template_array):
         if template_array[i] != '<placeholder>':
-            if i != len(template_array) - 1: 
-                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i], env)
-                json_file += json_auth_entry + ','
-            else:
+            if i == len(template_array) - 1:
                 json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i], env)
                 json_file += json_auth_entry
+            else: 
+                json_auth_entry = mcns_auth_entry(app_name, template_id_array[i], channel_type_array[i], sender_array[i], subject_array[i], template_array[i], dynamic_values_array[i], template_regex_array[i], env)
+                json_file += json_auth_entry + ','
             i += 1
         else:
             json_file += ''
@@ -362,12 +362,12 @@ def mcns_config_json(app_name, template_id_array, sender_array, channel_type_arr
     i = 0
     while i < len(template_array):
         if template_array[i] != '<placeholder>':
-            if i != len(channel_type_array) - 1: 
-                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i], env)
-                json_file += json_config_entry + ','
-            else:
+            if i == len(channel_type_array) - 1:
                 json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i], env)
                 json_file += json_config_entry
+            else:
+                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i], env)
+                json_file += json_config_entry + ','
             i += 1
         else:
             json_file += ''
