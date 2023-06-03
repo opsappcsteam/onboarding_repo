@@ -275,11 +275,17 @@ def mcns_auth_json(app_name, template_id_array, channel_type_array, sender_array
     else:
         return json_file
 
-def mcns_config_entry(app_name, template_id, sender, channel_type):
+def mcns_config_entry(app_name, template_id, sender, channel_type, env):
     channel_type = channel_type.lower()
     if '<placeholder>' in template_id:
         template_id = template_id.replace('<placeholder>', channel_type)
     if channel_type == 'email':
+        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        valid_email = re.findall(email_pattern, sender)
+        if valid_email ==  [] and env == 'sit':
+            sender = sender + '@sit.df-mcns.com'
+        elif valid_email == [] and env == 'prod':
+            sender = sender + '@mcns.defence.gov.sg'
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
@@ -349,10 +355,10 @@ def mcns_config_json(app_name, template_id_array, sender_array, channel_type_arr
     while i < len(template_array):
         if template_array[i] != '<placeholder>':
             if i != len(channel_type_array) - 1: 
-                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i])
+                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i], env)
                 json_file += json_config_entry + ','
             else:
-                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i])
+                json_config_entry = mcns_config_entry(app_name, template_id_array[i], sender_array[i], channel_type_array[i], env)
                 json_file += json_config_entry
             i += 1
         else:
