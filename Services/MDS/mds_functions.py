@@ -25,7 +25,8 @@ def mds_array(df, value):
                     array.append(output_str)
             if row[i] == value and value == True:
                 output_str = row[i + 1].split('[')[-1].split(']')[0]
-                array.append(output_str)
+                if output_str != 'Template ID':
+                    array.append(output_str)
             i += 1
     return array
 
