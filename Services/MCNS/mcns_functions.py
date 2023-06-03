@@ -1,7 +1,7 @@
 import re
 import uuid
 
-def mcns_array(df, value, env):
+def mcns_array(df, value):
     array = []
     for index, row in df.iterrows():
         i = 0
@@ -22,20 +22,12 @@ def mcns_array(df, value, env):
                     output_str = row[i + 2]
                     array.append(output_str)
             elif row[i] == value and value == 'Sender':
-                if env == 'sit':
-                    if str(row[i + 2]) == 'nan':
-                        output_str = '<placeholder>'
-                        array.append(output_str)
-                    else:
-                        output_str = row[i + 2]
-                        array.append(output_str)
-                elif env == 'prod':
-                    if str(row[i + 2]) == 'nan':
-                        output_str = '<placeholder>'
-                        array.append(output_str)
-                    else:
-                        output_str = row[i + 2]
-                        array.append(output_str)
+                if str(row[i + 2]) == 'nan':
+                    output_str = '<placeholder>'
+                    array.append(output_str)
+                else:
+                    output_str = row[i + 2]
+                    array.append(output_str)
             elif row[i] == value and value == 'Subject':
                 if str(row[i + 2]) == 'nan':
                     output_str = '<placeholder>'
@@ -149,6 +141,10 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
             }}
         }}'''
     elif channel_type == 'sms' and regex_json != '':
+        if env == 'sit' and sender == '<placeholder>':
+            sender = '+6580283091'
+        elif env == 'prod' and sender == '<placeholder>':
+            sender = '73884'
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
@@ -175,6 +171,10 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
             }}
         }}'''
     elif channel_type == 'sms' and regex_json == '':
+        if env == 'sit' and sender == '<placeholder>':
+            sender = '+6580283091'
+        elif env == 'prod' and sender == '<placeholder>':
+            sender = '73884'
         mcns_auth_entry = f'''
         {{
             "PutRequest": {{
