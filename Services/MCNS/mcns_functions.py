@@ -303,6 +303,10 @@ def mcns_config_entry(app_name, template_id, sender, channel_type, env):
             }}
         }}'''
     elif channel_type == 'sms':
+        if env == 'sit' and sender == '<placeholder>':
+            sender = '+6580283091'
+        elif env == 'prod' and sender == '<placeholder>':
+            sender = '73884'
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
