@@ -23,6 +23,9 @@ def mds_array(df, value):
                     output_str = ' '.join(line.lstrip() for line in output_str)
                     output_str = re.sub(r'(\$\{.*?\}|".*?")|([a-zA-Z_]+)', lambda match: match.group(1) if match.group(1) else match.group(2).lower(), output_str)
                     array.append(output_str)
+            if row[i] == value and value == True:
+                output_str = row[i + 1].split('[')[-1].split(']')[0]
+                array.append(output_str)
             i += 1
     return array
 
@@ -149,12 +152,32 @@ def field_array_of_arrays(ref_array, split_array):
     field_array_of_arrays.append(array)
     return field_array_of_arrays
 
-def data_contract_yaml(app_name, table_names_array, field_array_of_arrays):
-    yaml_file = f'''---
+def data_contract_yaml(app_name, table_names_array, field_array_of_arrays, pop_svc_array):
+    if pop_svc_array == []:
+        yaml_file = f'''---
 role: [{app_name}]
 filter: {{
     it0001_persg: [], # e.g [A,B,C]
     it0001_werks: []  # e.g ["0001","0002","0003"]
+}}
+
+table:'''
+    else:
+        pop_array = []
+        svc_array = []
+        for item in pop_svc_array:
+            if item.isdigit():
+                svc_array.append(item)
+            else:
+                pop_array.append(item)
+
+        pop_array = str(pop_array).replace("'", '').replace(' ', '')
+        svc_array = str(svc_array).replace("'", '"').replace(' ', '')
+        yaml_file = f'''---
+role: [{app_name}]
+filter: {{
+    it0001_persg: {pop_array}, # e.g [A,B,C]
+    it0001_werks: {svc_array}  # e.g ["0001","0002","0003"]
 }}
 
 table:'''
