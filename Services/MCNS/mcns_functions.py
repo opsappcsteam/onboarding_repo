@@ -78,9 +78,10 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
         email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
-            sender = sender.lower() + '@sit.df-mcns.com'
+            sender = sender + '@sit.df-mcns.com'
         elif valid_email == [] and env == 'prod':
-            sender = sender.lower() + '@mcns.defence.gov.sg'
+            sender = sender + '@mcns.defence.gov.sg'
+        sender = sender.lower()
             
         mcns_auth_entry = f'''
         {{
@@ -114,9 +115,10 @@ def mcns_auth_entry(app_name, template_id, channel_type, sender, subject, templa
         email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
-            sender = sender.lower() + '@sit.df-mcns.com'
+            sender = sender + '@sit.df-mcns.com'
         elif valid_email == [] and env == 'prod':
-            sender = sender.lower() + '@mcns.defence.gov.sg'
+            sender = sender + '@mcns.defence.gov.sg'
+        sender = sender.lower()
 
         mcns_auth_entry = f'''
         {{
@@ -283,9 +285,11 @@ def mcns_config_entry(app_name, template_id, sender, channel_type, env):
         email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
-            sender = sender.lower() + '@sit.df-mcns.com'
+            sender = sender + '@sit.df-mcns.com'
         elif valid_email == [] and env == 'prod':
-            sender = sender.lower() + '@mcns.defence.gov.sg'
+            sender = sender + '@mcns.defence.gov.sg'
+        sender = sender.lower()    
+        
         mcns_config_entry = f'''
         {{
             "PutRequest": {{
