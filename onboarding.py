@@ -18,13 +18,13 @@ if excel_name == None:
     onboarding_error('No Excel')
 
 print(f'Excel Detected: {get_excel_name()}')
-env = input('What environment are you onboarding to? (sit/prod): ').lower()
+env = input('What environment are you onboarding to? (sit/prod): ').lower().strip()
 
 if env not in env_array:
     onboarding_error('Invalid Env')
 
 try:
-    version = input('Which onboarding version are you using? (1 / 2): ')
+    version = input('Which onboarding version are you using? (1 / 2): ').strip()
     if version not in version_array:
         onboarding_error('Invalid Version')
 
