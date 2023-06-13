@@ -35,8 +35,7 @@ def mcns_array(df, value):
                 else:
                     input_str = row[i + 2]
                     output_str = re.sub(r'\$\((\w+)\)', r'${\1}', input_str)
-                    output_str = output_str.replace('"${', '${').replace('}"', '}')
-                    output_str = output_str.replace("'", '"').replace(r'"', r'\"')
+                    output_str = output_str.replace(r'"', r'\"')
                     array.append(output_str)
             elif row[i] == value and value == 'Template':
                 if str(row[i + 2]) == 'nan':
