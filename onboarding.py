@@ -1,47 +1,53 @@
-import pandas as pd
-from Services.shared_functions import onboarding_error, get_excel_name, get_excel_path
-from Services.MCNS.mcns import mcns_onboarding
-from Services.MDS.mds import mds_onboarding
-from Services.SFT.sft import sft_onboarding
+import sys
+import warnings
+from services.common.excelsheet import *
+from services.common.environment import *
+from services.mcns.mcns_main import mcns_main
+from services.mds.mds_main import mds_main
+from services.mds.mpds_main import mpds_main
+from services.myinfo.myinfo_main import myinfo_main
+from services.sft.sft_main import sft_main
+from services.survey.survey_main import survey_main
 
+warnings.filterwarnings('ignore')
 print('''
-############################
- AppCS Onboarding Programme
-############################
-''')    
+=========================================================
+AppCS Onboarding Program
+=========================================================
+''')
+path = excel_path()
+if path is None:
+    print('🚫 No Excelsheet Found')
+    sys.exit()
 
-env_array = ['sit', 'prod']
-version_array = ['1', '2']
-excel_name = get_excel_name()
+env = get_environment()
+if env is None:
+    print('🚫 Invalid Environment')
+    sys.exit()
 
-if excel_name == None:
-    onboarding_error('No Excel')
+app_name = excel_name()
+sheetlist = excel_sheets()
+str_sheetlist = str(sheetlist).replace('[', '').replace(']', '').replace("'", '')
+print(f'''
+=========================================================
+Excelsheet: {app_name}
+Services: {str_sheetlist}
+Environment: {env.upper()}
+=========================================================
+''')
 
-print(f'Excel Detected: {get_excel_name()}')
-env = input('What environment are you onboarding to? (sit/prod): ').lower().strip()
-
-if env not in env_array:
-    onboarding_error('Invalid Env')
-
-try:
-    version = input('Which onboarding version are you using? (1 / 2): ').strip()
-    if version not in version_array:
-        onboarding_error('Invalid Version')
-
-    if version == '1':
-        pd.read_excel(get_excel_path(), 'MDS')
-    elif version == '2':
-        pd.read_excel(get_excel_path(), 'MPDS')
-
-    print(f'''
-############################
-Onboarding Environment: {env.upper()}
-Form Version: {version}
-############################
-    ''')    
-    mds_onboarding(version)
-    mcns_onboarding(env)
-    sft_onboarding(env)
-    print()
-except ValueError:
-    onboarding_error('Incorrect Version')
+if sheetlist != '🚫 No Services Detected':
+    if 'MCNS' in sheetlist:
+        mcns_main(path, app_name, env)
+    if 'MDS' in sheetlist:
+        mds_main(path, app_name)
+    if 'MPDS' in sheetlist:
+        mpds_main(path, app_name)
+    if 'SFT' in sheetlist:
+        sft_main(path, app_name, env)
+    if 'MyInfo' in sheetlist:
+        myinfo_main(path, app_name)
+    if 'Survey' in sheetlist:
+        survey_main(path, app_name)
+    print('''
+=========================================================''')
