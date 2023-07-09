@@ -68,4 +68,5 @@ def dynamic_values_array_generator(subject_array, template_array):
             array = list(array)
             dynamic_values_array.append(array)
             i += 1
+    dynamic_values_array.sort()
     return dynamic_values_array
