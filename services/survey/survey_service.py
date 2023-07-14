@@ -1,15 +1,7 @@
-import csv
 from openpyxl import Workbook
 
 def onboard_csv_content(operation_array, project_name, role_array, email_array):
-    active = False
-    for operation in operation_array:
-        if operation == 'Onboard':
-            active = True
-    
-    if active == False:
-        print('Survey Onboard: Skipped')
-    else:
+    if 'onboard' in operation_array:
         workbook = Workbook()
         sheet1 = workbook.active
         sheet1.title = 'Onboard'
@@ -24,16 +16,11 @@ def onboard_csv_content(operation_array, project_name, role_array, email_array):
             i += 1
         workbook.save(f'./artifacts/onboarding/{project_name}-Survey_Onboard.csv')
         print('Survey Onboard: Generated')
+    else:
+        print('Survey Onboard: Skipped')
 
 def reset_csv_content(operation_array, project_name, role_array, email_array):
-    active = False
-    for operation in operation_array:
-        if operation == 'Reset':
-            active = True
-    
-    if active == False:
-        print('Survey Reset: Skipped')
-    else:
+    if 'reset' in operation_array:
         workbook = Workbook()
         sheet1 = workbook.active
         sheet1.title = 'Reset'
@@ -48,16 +35,11 @@ def reset_csv_content(operation_array, project_name, role_array, email_array):
             i += 1
         workbook.save(f'./artifacts/onboarding/{project_name}-Survey_Reset.csv')
         print('Survey Reset: Generated')
+    else:
+        print('Survey Reset: Skipped')
 
 def unlock_csv_content(operation_array, project_name, role_array, email_array):
-    active = False
-    for operation in operation_array:
-        if operation == 'Unlock':
-            active = True
-    
-    if active == False:
-        print('Survey Unlock: Skipped')
-    else:
+    if 'unlock' in operation_array:
         workbook = Workbook()
         sheet1 = workbook.active
         sheet1.title = 'Unlock'
@@ -72,3 +54,5 @@ def unlock_csv_content(operation_array, project_name, role_array, email_array):
             i += 1
         workbook.save(f'./artifacts/onboarding/{project_name}-Survey_Unlock.csv')
         print('Survey Unlock: Generated')
+    else:
+        print('Survey Unlock: Skipped')
