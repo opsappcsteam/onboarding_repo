@@ -9,7 +9,7 @@ def onboard_csv_content(operation_array, project_name, role_array, email_array):
         sheet1.append(['ONBOARD', project_name, project_name, 'System User', 'DF_ECS@dsta.gov.sg'])
         i = 0
         while i < len(operation_array):
-            if operation_array[i] == 'Onboard':
+            if operation_array[i] == 'onboard':
                 sheet1.append(['ONBOARD', email_array[i], project_name, role_array[i], email_array[i]])
             else:
                 pass
@@ -28,7 +28,7 @@ def reset_csv_content(operation_array, project_name, role_array, email_array):
 
         i = 0
         while i < len(operation_array):
-            if operation_array[i] == 'Reset':
+            if operation_array[i] == 'reset':
                 sheet1.append(['RESET', email_array[i], project_name, role_array[i], email_array[i]])
             else:
                 pass
@@ -47,7 +47,7 @@ def unlock_csv_content(operation_array, project_name, role_array, email_array):
 
         i = 0
         while i < len(operation_array):
-            if operation_array[i] == 'Unlock':
+            if operation_array[i] == 'unlock':
                 sheet1.append(['UNLOCK', email_array[i], project_name, role_array[i], email_array[i]])
             else:
                 pass
