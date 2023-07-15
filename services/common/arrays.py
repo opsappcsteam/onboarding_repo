@@ -24,5 +24,5 @@ def column_array(sheet_info, header):
             i += 1
     if start_index != []:
         for item in sheet_info.iloc[start_index[0]:end_index[0], column[0]]:
-            column_array.append(str(item).lower())
+            column_array.append(str(item))
     return column_array
