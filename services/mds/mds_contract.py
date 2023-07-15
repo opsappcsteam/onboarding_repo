@@ -29,8 +29,11 @@ filter: {{
 
 table:'''
 
+        table_name_array = list(map(lambda x: x.lower(), table_name_array))
+
         i = 0
         while i < len(table_name_array):
+            field_arrays[i] = list(map(lambda x: x.lower(), field_arrays[i]))
             content += mds_contract_entry(table_name_array[i], field_arrays[i])
             i += 1
         return content
