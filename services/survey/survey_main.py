@@ -1,5 +1,6 @@
 import pandas as pd
 from services.common.arrays import *
+from services.common.file_generation import *
 from .survey_service import *
 
 def survey_main(excel_path, app_name):
@@ -7,6 +8,10 @@ def survey_main(excel_path, app_name):
     operation_array = column_array(survey_info, 'Action')
     role_array = column_array(survey_info, 'Role')
     email_array = column_array(survey_info, 'Official Email')
-    onboard_csv_content(operation_array, app_name, role_array, email_array)
-    reset_csv_content(operation_array, app_name, role_array, email_array)
-    unlock_csv_content(operation_array, app_name, role_array, email_array)
+    onboard_content = onboard_csv_content(operation_array, app_name, role_array, email_array)
+    reset_content = reset_csv_content(operation_array, app_name, role_array, email_array)
+    unlock_content = unlock_csv_content(operation_array, app_name, role_array, email_array)
+
+    onboarding_file_generation(app_name, 'Survey', 'Onboard', onboard_content, '.csv', '')
+    onboarding_file_generation(app_name, 'Survey', 'Reset', reset_content, '.csv', '')
+    onboarding_file_generation(app_name, 'Survey', 'Unlock', unlock_content, '.csv', '')
