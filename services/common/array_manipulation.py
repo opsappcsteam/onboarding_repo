@@ -43,6 +43,7 @@ def dynamic_values_array_generator(subject_array, template_array):
                 array.append(value)
             array = set(array)
             array = list(array)
+            array.sort()
             dynamic_values_array.append(array)
             i += 1  
     elif template_array == []:
@@ -53,6 +54,7 @@ def dynamic_values_array_generator(subject_array, template_array):
                 array.append(value)
             array = set(array)
             array = list(array)
+            array.sort()
             dynamic_values_array.append(array)
             i += 1  
     else:
@@ -66,7 +68,7 @@ def dynamic_values_array_generator(subject_array, template_array):
                 array.append(value)
             array = set(array)
             array = list(array)
+            array.sort()
             dynamic_values_array.append(array)
             i += 1
-    dynamic_values_array.sort()
     return dynamic_values_array
