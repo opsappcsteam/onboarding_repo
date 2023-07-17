@@ -12,7 +12,7 @@ def main_name_converter(table_name_array):
         table_name = table_name.replace('_main', '')
         if table_name == 'audit_code' or table_name == 'audit_infotype':
             converted_table_name_array.append(table_name)
-        elif table_name.split('_')[0] == 'cd':
+        elif table_name.split('_')[0].lower() == 'cd':
             table_name = table_name.replace('_', '')
             converted_table_name_array.append(table_name + '_main')
         else:
