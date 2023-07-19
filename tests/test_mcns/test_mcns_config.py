@@ -34,6 +34,60 @@ class TestMcnsConfig(unittest.TestCase):
 
         app_name = 'app-test'
         template_id = 'templateId'
+        channel_type = 'sms'
+        sender = 'nan'
+        env = 'prod'
+        entry = mcns_configuration_entry(app_name, template_id, channel_type, sender, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#MINDEF#templateId"
+                    },
+                    "sk": {
+                        "S": "sms"
+                    },
+                    "appid": {
+                        "S": "<placeholder>"
+                    },
+                    "originationNumber": {
+                        "S": "73884"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
+        app_name = 'app-test'
+        template_id = 'templateId'
+        channel_type = 'sms'
+        sender = 'testSender'
+        env = 'prod'
+        entry = mcns_configuration_entry(app_name, template_id, channel_type, sender, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#testSender#templateId"
+                    },
+                    "sk": {
+                        "S": "sms"
+                    },
+                    "appid": {
+                        "S": "<placeholder>"
+                    },
+                    "originationNumber": {
+                        "S": "73884"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
+        app_name = 'app-test'
+        template_id = 'templateId'
         channel_type = 'email'
         sender = 'testSender'
         env = 'sit'
