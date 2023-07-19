@@ -42,6 +42,80 @@ class TestMcnsAuth(unittest.TestCase):
         },'''
         self.assertEqual(entry, expected_entry)
 
+        app_name = 'app-test'
+        template_id = 'testTemplateId'
+        channel_type = 'sms'
+        sender = 'nan'
+        subject = 'testSubject'
+        template = 'testTemplate'
+        dynamic_value_array = ['value1', 'value2']
+        regex_json = '{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }'
+        env = 'prod'
+        entry = mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_value_array, regex_json, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#MINDEF#testTemplateId"
+                    },
+                    "subject": {
+                        "S": "MCNS Notification"
+                    },
+                    "templateValueSchema": {
+                        "S": "{\\"$schema\\":\\"https://json-schema.org/draft/2020-12/schema\\",\\"$id\\":\\"https://dsta.gov.sg/app1.schema.json\\",\\"title\\":\\"app1\\",\\"type\\":\\"object\\",\\"properties\\":{\\"value1\\":{\\"description\\":\\"value1field\\", \\"type\\":\\"string\\"}, \\"value2\\":{\\"description\\":\\"value2field\\", \\"type\\":\\"string\\"}},\\"required\\":[\\"value1\\", \\"value2\\"]}"
+                    },
+                    "template": {
+                        "S": "testTemplate"
+                    },
+                    "regEx": {
+                        "S": "{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }"
+                    },
+                    "pkstatus": {
+                        "S": "true"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
+        app_name = 'app-test'
+        template_id = 'testTemplateId'
+        channel_type = 'sms'
+        sender = 'testSender'
+        subject = 'testSubject'
+        template = 'testTemplate'
+        dynamic_value_array = ['value1', 'value2']
+        regex_json = '{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }'
+        env = 'prod'
+        entry = mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_value_array, regex_json, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#testSender#testTemplateId"
+                    },
+                    "subject": {
+                        "S": "MCNS Notification"
+                    },
+                    "templateValueSchema": {
+                        "S": "{\\"$schema\\":\\"https://json-schema.org/draft/2020-12/schema\\",\\"$id\\":\\"https://dsta.gov.sg/app1.schema.json\\",\\"title\\":\\"app1\\",\\"type\\":\\"object\\",\\"properties\\":{\\"value1\\":{\\"description\\":\\"value1field\\", \\"type\\":\\"string\\"}, \\"value2\\":{\\"description\\":\\"value2field\\", \\"type\\":\\"string\\"}},\\"required\\":[\\"value1\\", \\"value2\\"]}"
+                    },
+                    "template": {
+                        "S": "testTemplate"
+                    },
+                    "regEx": {
+                        "S": "{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }"
+                    },
+                    "pkstatus": {
+                        "S": "true"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
     def test_mcns_authorizer_entry_email(self):
         app_name = 'app-test'
         template_id = 'testTemplateId'
