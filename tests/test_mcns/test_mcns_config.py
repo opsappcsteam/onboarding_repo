@@ -16,7 +16,7 @@ class TestMcnsConfig(unittest.TestCase):
             "PutRequest": {
                 "Item": {
                     "pk": {
-                        "S": "app-test#testSender#templateId"
+                        "S": "app-test#testsender#templateId"
                     },
                     "sk": {
                         "S": "sms"
@@ -26,6 +26,33 @@ class TestMcnsConfig(unittest.TestCase):
                     },
                     "originationNumber": {
                         "S": "+6580283091"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
+        app_name = 'app-test'
+        template_id = 'templateId'
+        channel_type = 'sms'
+        sender = 'testSender'
+        env = 'prod'
+        entry = mcns_configuration_entry(app_name, template_id, channel_type, sender, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#testSender#templateId"
+                    },
+                    "sk": {
+                        "S": "sms"
+                    },
+                    "appid": {
+                        "S": "<placeholder>"
+                    },
+                    "originationNumber": {
+                        "S": "73884"
                     }
                 }
             }
@@ -110,6 +137,30 @@ class TestMcnsConfig(unittest.TestCase):
         },'''
         self.assertEqual(entry, expected_entry)
 
+        app_name = 'app-test'
+        template_id = 'templateId'
+        channel_type = 'email'
+        sender = 'testSender'
+        env = 'prod'
+        entry = mcns_configuration_entry(app_name, template_id, channel_type, sender, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#testSender@mcns.defence.gov.sg#templateId"
+                    },
+                    "sk": {
+                        "S": "email"
+                    },
+                    "appid": {
+                        "S": "<placeholder>"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
     def test_mcns_configuration_content(self):
         app_name = 'app-test'
         template_id_array = ['templateId1', 'templateId2'] 
@@ -142,7 +193,7 @@ class TestMcnsConfig(unittest.TestCase):
             "PutRequest": {
                 "Item": {
                     "pk": {
-                        "S": "app-test#testemail@mcns.defence.gov.sg#templateId2"
+                        "S": "app-test#testEmail@mcns.defence.gov.sg#templateId2"
                     },
                     "sk": {
                         "S": "email"
