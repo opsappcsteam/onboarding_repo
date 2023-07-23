@@ -20,7 +20,7 @@ def mcns_configuration_entry(app_name, template_id, channel_type, sender, env):
         elif env == 'prod' and sender != 'nan':
             origination_number = '73884'
         elif env == 'sit' and sender == 'nan':
-            sender == '+6580283091'
+            sender = '+6580283091'
             origination_number = '+6580283091'
         elif env == 'prod' and sender == 'nan':
             sender = 'MINDEF'
