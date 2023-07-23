@@ -4,7 +4,9 @@ from services.mcns.mcns_auth import *
 
 class TestMcnsAuth(unittest.TestCase):
     maxDiff = None
+
     def test_mcns_authorizer_entry_sms(self):
+        # sit sms lowercase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'sms'
@@ -42,6 +44,7 @@ class TestMcnsAuth(unittest.TestCase):
         },'''
         self.assertEqual(entry, expected_entry)
 
+        # sit sms nan number
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'sms'
@@ -50,14 +53,14 @@ class TestMcnsAuth(unittest.TestCase):
         template = 'testTemplate'
         dynamic_value_array = ['value1', 'value2']
         regex_json = '{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }'
-        env = 'prod'
+        env = 'sit'
         entry = mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_value_array, regex_json, env)
         expected_entry = '''
         {
             "PutRequest": {
                 "Item": {
                     "pk": {
-                        "S": "app-test#MINDEF#testTemplateId"
+                        "S": "app-test#+6580283091#testTemplateId"
                     },
                     "subject": {
                         "S": "MCNS Notification"
@@ -78,7 +81,8 @@ class TestMcnsAuth(unittest.TestCase):
             }
         },'''
         self.assertEqual(entry, expected_entry)
-
+        
+        # prod sms exactcase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'sms'
@@ -116,7 +120,46 @@ class TestMcnsAuth(unittest.TestCase):
         },'''
         self.assertEqual(entry, expected_entry)
 
+        # prod sms nan MINDEF
+        app_name = 'app-test'
+        template_id = 'testTemplateId'
+        channel_type = 'sms'
+        sender = 'nan'
+        subject = 'testSubject'
+        template = 'testTemplate'
+        dynamic_value_array = ['value1', 'value2']
+        regex_json = '{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }'
+        env = 'prod'
+        entry = mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, template, dynamic_value_array, regex_json, env)
+        expected_entry = '''
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "app-test#MINDEF#testTemplateId"
+                    },
+                    "subject": {
+                        "S": "MCNS Notification"
+                    },
+                    "templateValueSchema": {
+                        "S": "{\\"$schema\\":\\"https://json-schema.org/draft/2020-12/schema\\",\\"$id\\":\\"https://dsta.gov.sg/app1.schema.json\\",\\"title\\":\\"app1\\",\\"type\\":\\"object\\",\\"properties\\":{\\"value1\\":{\\"description\\":\\"value1field\\", \\"type\\":\\"string\\"}, \\"value2\\":{\\"description\\":\\"value2field\\", \\"type\\":\\"string\\"}},\\"required\\":[\\"value1\\", \\"value2\\"]}"
+                    },
+                    "template": {
+                        "S": "testTemplate"
+                    },
+                    "regEx": {
+                        "S": "{ \\"test\\": \\"value1\\", \\"test2\\": \\"value2\\" }"
+                    },
+                    "pkstatus": {
+                        "S": "true"
+                    }
+                }
+            }
+        },'''
+        self.assertEqual(entry, expected_entry)
+
     def test_mcns_authorizer_entry_email(self):
+        # sit email lowercase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'email'
@@ -156,7 +199,7 @@ class TestMcnsAuth(unittest.TestCase):
             }
         },'''
         self.assertEqual(entry, expected_entry)
-
+        # prod email exactcase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'email'
@@ -198,6 +241,7 @@ class TestMcnsAuth(unittest.TestCase):
         self.assertEqual(entry, expected_entry)
 
     def test_mcns_authorizer_entry_push(self):
+        # sit push lowercase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'push'
@@ -235,6 +279,7 @@ class TestMcnsAuth(unittest.TestCase):
         },'''
         self.assertEqual(entry, expected_entry)
 
+        # prod push exactcase
         app_name = 'app-test'
         template_id = 'testTemplateId'
         channel_type = 'push'
