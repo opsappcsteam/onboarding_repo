@@ -7,6 +7,7 @@ def pop_svc_converter(pop_svc_array):
     return clean_pop_svc_array
 
 def main_name_converter(table_name_array):
+    table_name_array = list(map(lambda x: x.lower(), table_name_array))
     converted_table_name_array = []
     for table_name in table_name_array:
         table_name = table_name.replace('_main', '')
