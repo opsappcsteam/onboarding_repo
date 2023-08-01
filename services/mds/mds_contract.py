@@ -29,8 +29,6 @@ filter: {{
 
 table:'''
 
-        table_name_array = list(map(lambda x: x.lower(), table_name_array))
-
         i = 0
         while i < len(table_name_array):
             field_arrays[i] = list(map(lambda x: x.lower(), field_arrays[i]))
