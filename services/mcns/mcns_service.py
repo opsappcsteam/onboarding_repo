@@ -3,7 +3,7 @@ import uuid
 def uuid_generator(template_id_array):
     uuid_template_id_array = []
     for template_id in template_id_array:
-        if template_id == 'nan' or template_id == '<This will be filled up by AppCS Onboarding Team>':
+        if template_id == 'nan' or template_id == '<Will be given by AppCS Onboarding Team>':
             template_id = '<channel_type>' + str(uuid.uuid4()).replace('-', '')
             uuid_template_id_array.append(template_id)
         else:
