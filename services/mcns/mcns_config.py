@@ -10,6 +10,8 @@ def mcns_configuration_entry(app_name, template_id, channel_type, sender, env):
         if valid_email ==  [] and env == 'sit':
             sender = sender + '@sit.df-mcns.com'
             sender = sender.lower()
+        elif valid_email != [] and env == 'sit':
+            sender = sender.lower()
         elif valid_email == [] and env == 'prod':
             sender = sender + '@mcns.defence.gov.sg'
 
