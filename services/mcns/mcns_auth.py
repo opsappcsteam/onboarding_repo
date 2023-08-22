@@ -17,23 +17,15 @@ def mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, 
         valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
             sender = sender + '@sit.df-mcns.com'
-            sender = sender.lower()
-        elif valid_email != [] and env == 'sit':
-            sender = sender.lower()
         elif valid_email == [] and env == 'prod':
             sender = sender + '@mcns.defence.gov.sg'
         
     if channel_type == 'sms':
         if env == 'sit' and sender == 'nan':
             sender = '+6580283091'
-        if env == 'sit' and sender != 'nan':
-            sender = sender.lower()
         if env == 'prod' and sender == 'nan':
             sender = 'MINDEF'
         subject = 'MCNS Notification'
-
-    if channel_type == 'push' and env == 'sit':
-        sender = sender.lower()
 
     mcns_authorizer_entry = f'''
         {{
