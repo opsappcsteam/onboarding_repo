@@ -9,15 +9,11 @@ def mcns_configuration_entry(app_name, template_id, channel_type, sender, env):
         valid_email = re.findall(email_pattern, sender)
         if valid_email ==  [] and env == 'sit':
             sender = sender + '@sit.df-mcns.com'
-            sender = sender.lower()
-        elif valid_email != [] and env == 'sit':
-            sender = sender.lower()
         elif valid_email == [] and env == 'prod':
             sender = sender + '@mcns.defence.gov.sg'
 
     if channel_type == 'sms':
         if env == 'sit' and sender != 'nan':
-            sender = sender.lower()
             origination_number = '+6580283091'
         elif env == 'prod' and sender != 'nan':
             origination_number = '73884'
@@ -27,9 +23,6 @@ def mcns_configuration_entry(app_name, template_id, channel_type, sender, env):
         elif env == 'prod' and sender == 'nan':
             sender = 'MINDEF'
             origination_number = '73884'
-
-    if channel_type == 'push' and env == 'sit':
-        sender = sender.lower()
 
     mcns_config_entry = f'''
         {{
