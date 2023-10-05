@@ -4,7 +4,7 @@ def uuid_generator(template_id_array):
     uuid_template_id_array = []
     for template_id in template_id_array:
         if template_id == 'nan' or template_id == '<Will be given by AppCS Onboarding Team>' or template_id == '<This will be filled up by AppCS Onboarding Team>':
-            template_id = '<table_name>' + str(uuid.uuid4())
+            template_id = '<table_name>-' + str(uuid.uuid4())
             uuid_template_id_array.append(template_id)
         else:
             uuid_template_id_array.append(template_id)
