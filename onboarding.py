@@ -2,7 +2,7 @@ import sys
 import warnings
 from services.common.excelsheet import *
 from services.common.environment import *
-from services.mcns.mcns_main import mcns_main
+from services.mcns.mcns_main import mcns_onboard
 from services.mds.mds_main import mds_main
 from services.mds.mpds_main import mpds_main
 from services.myinfo.myinfo_main import myinfo_main
@@ -38,7 +38,7 @@ Environment: {env.upper()}
 
 if sheetlist != '🚫 No Services Detected':
     if 'MCNS' in sheetlist:
-        mcns_main(path, app_name, env)
+        mcns_onboard(path, app_name, env)
     if 'MDS' in sheetlist:
         mds_main(path, app_name)
     if 'MPDS' in sheetlist:
