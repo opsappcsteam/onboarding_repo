@@ -30,11 +30,9 @@ def mcns_report(excel_path, app_name, env):
     subject_array = template_subject_cleaner(row_array(mcns_sheet, 'Subject', 2), 'MCNS')
     template_array = template_subject_cleaner(row_array(mcns_sheet, 'Template', 2), 'MCNS')
     regex_array = dynamic_values_array_generator(subject_array, template_array)
-    regex_json_array = regex_json_converter(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
+    regex_json_array = regex_validator(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
     all_arrays = [channel_type_array, template_id_array, sender_array, subject_array, template_array, regex_json_array]
-    
+
+    same_array_length = False
     if all(len(array) == len(arrays[0]) for array in arrays[1:]):
-        print("Yes")
-    else:
-        print("No")
-    
+        same_array_length = True
