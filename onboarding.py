@@ -3,11 +3,11 @@ import warnings
 from services.common.excelsheet import *
 from services.common.environment import *
 from services.mcns.mcns_main import mcns_onboard
-from services.mds.mds_main import mds_main
-from services.mds.mpds_main import mpds_main
-from services.myinfo.myinfo_main import myinfo_main
-from services.sft.sft_main import sft_main
-from services.survey.survey_main import survey_main
+from services.mds.mds_main import mds_onboard
+from services.mds.mpds_main import mpds_onboard
+from services.myinfo.myinfo_main import myinfo_onboard
+from services.sft.sft_main import sft_onboard
+from services.survey.survey_main import survey_onboard
 
 warnings.filterwarnings('ignore')
 print('''
@@ -40,14 +40,14 @@ if sheetlist != '🚫 No Services Detected':
     if 'MCNS' in sheetlist:
         mcns_onboard(path, app_name, env)
     if 'MDS' in sheetlist:
-        mds_main(path, app_name)
+        mds_onboard(path, app_name)
     if 'MPDS' in sheetlist:
-        mpds_main(path, app_name)
+        mpds_onboard(path, app_name)
     if 'SFT' in sheetlist:
-        sft_main(path, app_name, env)
+        sft_onboard(path, app_name, env)
     if 'MyInfo' in sheetlist:
-        myinfo_main(path, app_name)
+        myinfo_onboard(path, app_name)
     if 'Survey' in sheetlist:
-        survey_main(path, app_name)
+        survey_onboard(path, app_name)
     print('''
 =========================================================''')
