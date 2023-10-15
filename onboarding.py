@@ -12,7 +12,7 @@ from services.survey.survey_main import survey_main
 warnings.filterwarnings('ignore')
 print('''
 =========================================================
-AppCS Onboarding Program
+AppCS Onboarding File Generator
 =========================================================
 ''')
 path = excel_path()
