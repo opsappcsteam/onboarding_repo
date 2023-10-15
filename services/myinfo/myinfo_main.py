@@ -4,7 +4,7 @@ from services.common.file_generation import *
 from .myinfo_service import *
 from .myinfo_auth import *
 
-def myinfo_main(excel_path, app_name):
+def myinfo_onboard(excel_path, app_name):
     myinfo_sheet = pd.read_excel(excel_path, 'MyInfo')
     attributes_array = attributes_converter(myinfo_array(myinfo_sheet))
     redirect_uri = redirect_uri_converter(row_array(myinfo_sheet, 'Redirect URL:', 2))
