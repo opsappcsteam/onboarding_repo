@@ -1,4 +1,5 @@
 import uuid
+import json
 
 def uuid_generator(template_id_array):
     uuid_template_id_array = []
@@ -31,9 +32,18 @@ def template_id_converter(template_id_array, channel_type_array):
 
 def regex_json_converter(regex_json_array):
     converted_regex_json_array = []
-    for json in regex_json_array:
-        item = json.split("\n")
+    for json_item in regex_json_array:
+        item = json_item.split("\n")
         item = ' '.join(line.lstrip() for line in item)
         regex_json = item.replace('\\', '\\\\\\\\').replace('"', '\\"')
         converted_regex_json_array.append(regex_json)
     return converted_regex_json_array
+
+def regex_validator(regex_json_array):
+    validated_regex_json_array = []
+    for regex_json in regex_json_array:
+        try:
+            regex_json.loads(value)
+            validated_regex_json_array.append(regex_json)
+        except (json.JSONDecodeError, TypeError):
+            validated_regex_json_array.append("invalid json")
