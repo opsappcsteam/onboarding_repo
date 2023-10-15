@@ -21,3 +21,20 @@ def mcns_onboard(excel_path, app_name, env):
 
     onboarding_file_generation(app_name, 'MCNS', 'Authorizer', authorizer_content, '.json', '')
     onboarding_file_generation(app_name, 'MCNS', 'Configuration', configuration_content, '.json', '')
+
+def mcns_report(excel_path, app_name, env):
+    mcns_sheet = pd.read_excel(excel_path, 'MCNS')
+    channel_type_array = channel_type_converter(row_array(mcns_sheet, 'Channel Type', 2))
+    template_id_array = template_id_converter(uuid_generator(row_array(mcns_sheet, 'Template ID', 2)), channel_type_array)
+    sender_array = row_array(mcns_sheet, 'Sender', 2)
+    subject_array = template_subject_cleaner(row_array(mcns_sheet, 'Subject', 2), 'MCNS')
+    template_array = template_subject_cleaner(row_array(mcns_sheet, 'Template', 2), 'MCNS')
+    regex_array = dynamic_values_array_generator(subject_array, template_array)
+    regex_json_array = regex_json_converter(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
+    all_arrays = [channel_type_array, template_id_array, sender_array, subject_array, template_array, regex_json_array]
+    
+    if all(len(array) == len(arrays[0]) for array in arrays[1:]):
+        print("Yes")
+    else:
+        print("No")
+    
