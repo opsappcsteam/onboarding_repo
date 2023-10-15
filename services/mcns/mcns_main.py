@@ -33,10 +33,11 @@ def mcns_report(excel_path, app_name, env):
     regex_json_array = regex_validator(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
     all_arrays = [channel_type_array, template_id_array, sender_array, subject_array, template_array, regex_json_array]
 
-    invalid_json_array = find_false_position(regex_json_array)
+    invalid_json_array = invalid_regex_identifier(regex_json_array)
+    most_common_length = most_common_length_getter([len(channel_type_array), len(template_id_array), len(sender_id_array), len(subject_array), len(template_array), len(regex_json_array)])
     
     same_array_length = False
-    if all(len(array) == len(arrays[0]) for array in arrays[1:]):
+    if all(len(array) == most_common_length) for array in arrays[1:]):
         same_array_length = True
 
     if invalid_json_array == [] and same_array_length == True:
