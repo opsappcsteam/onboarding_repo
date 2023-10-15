@@ -6,7 +6,7 @@ from .mds_contract import *
 from .mds_template import *
 from .mds_service import *
 
-def mds_main(excel_path, app_name):
+def mds_onboard(excel_path, app_name):
     mds_sheet = pd.read_excel(excel_path, 'MDS')
     pop_svc_array = pop_svc_converter(row_array(mds_sheet, True, 1))
     table_name_array = main_name_converter(nan_remover(column_array(mds_sheet, 'Table Name')))
