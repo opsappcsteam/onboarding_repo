@@ -6,7 +6,7 @@ from services.common.array_manipulation import *
 from .sft_auth import *
 from .sft_service import *
 
-def sft_main(excel_path, app_name, env):
+def sft_onboard(excel_path, app_name, env):
     sft_sheet = pd.read_excel(excel_path, 'SFT')
     sns_callback = nan_remover(row_array(sft_sheet, 'SNS', 2))
     http_callback = nan_remover(row_array(sft_sheet, 'HTTP', 2))
