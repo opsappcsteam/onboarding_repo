@@ -1,5 +1,6 @@
 import uuid
 import json
+from collections import Counter
 
 def uuid_generator(template_id_array):
     uuid_template_id_array = []
@@ -48,7 +49,7 @@ def regex_validator(regex_json_array):
         except (json.JSONDecodeError, TypeError):
             validated_regex_json_array.append(False)
 
-def find_false_position(array):
+def invalid_regex_identifier(array):
     false_array = []
     i = 0
     while i < len(array):
@@ -56,3 +57,10 @@ def find_false_position(array):
             false_array.append(i)
         i += 1
     return false_array
+
+def most_common_length_getter(array):
+    counts = Counter(array)
+    most_common = counts.most_common(1)
+    most_common_element, most_common_count = most_common[0]
+    return most_common_length
+        
