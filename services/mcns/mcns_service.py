@@ -47,3 +47,12 @@ def regex_validator(regex_json_array):
             validated_regex_json_array.append(True)
         except (json.JSONDecodeError, TypeError):
             validated_regex_json_array.append(False)
+
+def find_false_position(array):
+    false_array = []
+    i = 0
+    while i < len(array):
+        if array[i] == False:
+            false_array.append(i)
+        i += 1
+    return false_array
