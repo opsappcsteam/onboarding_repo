@@ -31,21 +31,22 @@ def mcns_report(excel_path, app_name, env):
     template_array = template_subject_cleaner(row_array(mcns_sheet, 'Template', 2), 'MCNS')
     regex_array = dynamic_values_array_generator(subject_array, template_array)
     regex_json_array = regex_validator(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
-    all_arrays = [channel_type_array, template_id_array, sender_array, subject_array, template_array, regex_json_array]
 
     invalid_json_array = invalid_regex_identifier(regex_json_array)
     most_common_length = most_common_length_getter([len(channel_type_array), len(template_id_array), len(sender_id_array), len(subject_array), len(template_array), len(regex_json_array)])
     
-    same_array_length = False
-    if all(len(array) == most_common_length) for array in arrays[1:]):
-        same_array_length = True
-
-    if invalid_json_array == [] and same_array_length == True:
+    array_name_length_dictionary = { 'channel type array': len(channel_type_array), 'template id array': len(template_id_array), 'sender array': len(sender_array), 'subject array': len(subject_array), 'template array': len(template_array), 'regex json array': len(regex_json_array)}
+    missing_row_array = []
+    for key, value in array_name_length_dictionary.items():
+        if value != most_common_length:
+            missing_row_array.append(key)
+    
+    if invalid_json_array == [] and missing_row_array == []:
         print('''MCNS:
 - Missing Row: None
 - Regex JSON Invalidation: None''')
     else:
         print(f'''MCNS:
-- Missing Row: {same_array_length}
+- Missing Row: {missing_row_array}
 - Regex JSON Invalidation: {invalid_json_array}'''
     
