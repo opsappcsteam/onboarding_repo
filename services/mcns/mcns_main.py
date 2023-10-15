@@ -6,7 +6,7 @@ from .mcns_auth import *
 from .mcns_config import *
 from .mcns_service import *
 
-def mcns_main(excel_path, app_name, env):
+def mcns_onboard(excel_path, app_name, env):
     mcns_sheet = pd.read_excel(excel_path, 'MCNS')
     channel_type_array = channel_type_converter(row_array(mcns_sheet, 'Channel Type', 2))
     template_id_array = template_id_converter(uuid_generator(row_array(mcns_sheet, 'Template ID', 2)), channel_type_array)
