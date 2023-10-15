@@ -44,6 +44,6 @@ def regex_validator(regex_json_array):
     for regex_json in regex_json_array:
         try:
             regex_json.loads(value)
-            validated_regex_json_array.append(regex_json)
+            validated_regex_json_array.append(True)
         except (json.JSONDecodeError, TypeError):
-            validated_regex_json_array.append("invalid json")
+            validated_regex_json_array.append(False)
