@@ -21,10 +21,9 @@ def template_subject_cleaner(array, service):
             item = ' '.join(line.lstrip() for line in item)
             item = re.sub(r'(\$\{.*?\}|".*?")|([a-zA-Z_]+)', lambda match: match.group(1) if match.group(1) else match.group(2).lower(), item)
         elif service == 'MCNS':
+            item = item.replace('\t', '    ').replace('\\', '\\\\')
             item = item.split("\n")
-            item = ' '.join(line.lstrip() for line in item)
-            item = item.replace('\t', '    ')
-            item = item.replace('\\', '\\\\')
+            item = '\\n'.join(line.lstrip() for line in item)
             item = item.replace("'", '"').replace(r'"', r'\"')
         clean_template_array.append(item)
     return clean_template_array
