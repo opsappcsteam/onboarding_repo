@@ -10,7 +10,7 @@ def myinfo_array(sheet_info):
 
 def attributes_converter(attributes_array):
     attributes_map = []
-    del attributes_array[:2]
+    del attributes_array[:1]
     if len(attributes_array) == 17:
         attributes_map = ['uinfin', 'name', 'sex', 'race', 'dialect', 'dob', 'birthcountry', 'regadd', 'marital', 'email', 'mobileno', 'occupation', 'employment', 'childrenbirthrecords.birthcertno', 'childrenbirthrecords.name', 'childrenbirthrecords.sex', 'childrenbirthrecords.dob']
     elif len(attributes_array) == 18:
