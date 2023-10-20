@@ -7,12 +7,12 @@ from .mcns_config import *
 from .mcns_service import *
 
 def mcns_main(excel_path, app_name, env):
-    mcns_sheet = pd.read_excel(excel_path, 'MCNS')
+    mcns_sheet = pd.read_excel(excel_path, 'MCNS', keep_default_na=False)
     channel_type_array = channel_type_converter(row_array(mcns_sheet, 'Channel Type', 2))
     template_id_array = template_id_converter(uuid_generator(row_array(mcns_sheet, 'Template ID', 2)), channel_type_array)
     sender_array = row_array(mcns_sheet, 'Sender', 2)
     subject_array = subject_cleaner(row_array(mcns_sheet, 'Subject', 2), 'MCNS')
-    template_array = template_subject_cleaner(row_array(mcns_sheet, 'Template', 2), 'MCNS')
+    template_array = template_cleaner(row_array(mcns_sheet, 'Template', 2), 'MCNS', channel_type_array)
     regex_array = dynamic_values_array_generator(subject_array, template_array)
     regex_json_array = regex_json_converter(row_array(mcns_sheet, "Template Values' Regular Expression", 2))
     
