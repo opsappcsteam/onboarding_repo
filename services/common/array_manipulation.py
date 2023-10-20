@@ -36,21 +36,26 @@ def subject_cleaner(array, service):
         clean_subject_array.append(item)
     return clean_subject_array
 
-def template_subject_cleaner(array, service):
+def template_cleaner(array, service, channel_type_array):
     clean_template_array = []
-    for item in array:
-        item = re.sub(r'\$\((\w+)\)', r'${\1}', item)
-        if service == 'MDS' or service == 'MPDS':
-            item = item.replace('"${', '${').replace('}"', '}').split("\n")
-            item = ' '.join(line.lstrip() for line in item)
-            item = re.sub(r'(\$\{.*?\}|".*?")|([a-zA-Z_]+)', lambda match: match.group(1) if match.group(1) else match.group(2).lower(), item)
-        elif service == 'MCNS':
-            item = item.split("\n")
-            item = ' '.join(line.lstrip() for line in item)
-            item = item.replace('\t', '    ')
-            item = item.replace('\\', '\\\\')
-            item = item.replace("'", '"').replace(r'"', r'\"')
-        clean_template_array.append(item)
+    i = 0
+    if service == 'MCNS':
+        while i < len(array):
+            if channel_type_array[i] == 'email' or channel_type_array[i] == 'push':
+                item = array[i]
+                item = item.replace('\t', '    ').replace('\\', '\\\\')
+                item = item.split("\n")
+                item = ' '.join(line.lstrip() for line in item)
+                item = item.replace("'", '"').replace(r'"', r'\"')
+                clean_template_array.append(item)
+            else:
+                item = array[i]
+                item = item.replace('\t', '    ').replace('\\', '\\\\')
+                item = item.split("\n")
+                item = '\\n'.join(line.lstrip() for line in item)
+                item = item.replace("'", '"').replace(r'"', r'\"')
+                clean_template_array.append(item)                
+            i += 1
     return clean_template_array
 
 def dynamic_values_array_generator(subject_array, template_array):
