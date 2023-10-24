@@ -32,7 +32,7 @@ def subject_cleaner(array, service):
             item = ' '.join(line.lstrip() for line in item)
             item = item.replace('\t', '    ')
             item = item.replace('\\', '\\\\')
-            item = item.replace("'", '"').replace(r'"', r'\"')
+            item = item.replace(r'"', r'\"')
         clean_subject_array.append(item)
     return clean_subject_array
 
@@ -58,7 +58,7 @@ def template_cleaner(array, service, channel_type_array):
                     line.replace('\t', '    ').replace('\\', '\\\\')
                     line_array.append(line)
                 item = '\\n'.join(line.lstrip() for line in line_array)
-                item = item.replace("'", '"').replace(r'"', r'\"')
+                item = item.replace(r'"', r'\"')
                 clean_template_array.append(item)                
             i += 1
     return clean_template_array
