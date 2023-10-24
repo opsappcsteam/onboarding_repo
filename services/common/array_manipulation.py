@@ -46,7 +46,7 @@ def template_cleaner(array, service, channel_type_array):
                 item = item.replace('\t', '    ').replace('\\', '\\\\')
                 item = item.split("\n")
                 item = ' '.join(line.lstrip() for line in item)
-                item = item.replace("'", '"').replace(r'"', r'\"')
+                item = item.replace(r'"', r'\"')
                 clean_template_array.append(item)
             else:
                 line_array = []
