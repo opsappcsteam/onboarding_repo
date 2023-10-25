@@ -43,6 +43,7 @@ def template_cleaner(array, service, channel_type_array):
         while i < len(array):
             if channel_type_array[i] == 'email' or channel_type_array[i] == 'push':
                 item = array[i]
+                item = re.sub(r'\$\((\w+)\)', r'${\1}', item)
                 item = item.replace('\t', '    ').replace('\\', '\\\\')
                 item = item.split("\n")
                 item = ' '.join(line.lstrip() for line in item)
@@ -51,6 +52,7 @@ def template_cleaner(array, service, channel_type_array):
             else:
                 line_array = []
                 item = array[i]
+                item = re.sub(r'\$\((\w+)\)', r'${\1}', item)
                 item = item.replace('\n', '')
                 item = item.replace(r'\n', '\n')
                 item = item.split('\n')
