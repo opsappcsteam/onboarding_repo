@@ -7,7 +7,7 @@ from .mcns_config import *
 from .mcns_service import *
 
 def mcns_main(excel_path, app_name, env):
-    mcns_sheet = pd.read_excel(excel_path, 'MCNS', keep_default_na=False)
+    mcns_sheet = pd.read_excel(excel_path, 'MCNS', keep_default_na=False, na_values=[''])
     channel_type_array = channel_type_converter(row_array(mcns_sheet, 'Channel Type', 2))
     template_id_array = template_id_converter(uuid_generator(row_array(mcns_sheet, 'Template ID', 2)), channel_type_array)
     sender_array = row_array(mcns_sheet, 'Sender', 2)
