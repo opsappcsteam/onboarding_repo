@@ -46,7 +46,7 @@ if sheetlist != '🚫 No Services Detected':
         mpds_main(path, app_name)
     if 'SFT' in sheetlist:
         sft_main(path, app_name, env)
-    if 'SFS' in sheelist:
+    if 'SFS' in sheetlist:
         sfs_main(path, app_name, env)
     if 'MyInfo' in sheetlist:
         myinfo_main(path, app_name)
