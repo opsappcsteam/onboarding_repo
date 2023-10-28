@@ -7,6 +7,7 @@ from services.mds.mds_main import mds_main
 from services.mds.mpds_main import mpds_main
 from services.myinfo.myinfo_main import myinfo_main
 from services.sft.sft_main import sft_main
+from services.sft.sfs_main import sfs_main
 from services.survey.survey_main import survey_main
 
 warnings.filterwarnings('ignore')
@@ -45,6 +46,8 @@ if sheetlist != '🚫 No Services Detected':
         mpds_main(path, app_name)
     if 'SFT' in sheetlist:
         sft_main(path, app_name, env)
+    if 'SFS' in sheelist:
+        sfs_main(path, app_name, env)
     if 'MyInfo' in sheetlist:
         myinfo_main(path, app_name)
     if 'Survey' in sheetlist:
