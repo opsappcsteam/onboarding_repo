@@ -34,6 +34,6 @@ def regex_json_converter(regex_json_array):
     for json in regex_json_array:
         item = json.split("\n")
         item = ' '.join(line.lstrip() for line in item)
-        regex_json = item.replace('\\', '\\\\\\\\').replace('"', '\\"')
+        regex_json = item.replace('\\', '\\\\\\\\').replace('"', '\\"').replace(r'\\\\\"', r'\\\\\\\"')
         converted_regex_json_array.append(regex_json)
     return converted_regex_json_array
