@@ -1,0 +1,1043 @@
+---
+
+# 4
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{  nric_uuid_main (where: {nric: {_like: ${nric_partial}}}) {  nric  uuid  }  }'
+    pk: nric_uuid_main-1b28e809-b2b1-41ef-b6ed-dacbb09fb282
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        nric_partial:
+            pattern:
+            type:
+    required:
+        - nric_partial
+
+# 5
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0001_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { werks t500p_name1  t500p_persa   t501t_ptext  t501t_persg  t501t_sprsl persk t503t_ptext  t503t_persk  t001p_btext  t001p_werks  t001p_btrtl  uuid nric pernr begda endda } it0000_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { stat2   uuid pernr nric } }'
+    pk: it0001-71cfae5a-60b4-4a31-8b2f-4260de7ad8ab
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 6
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0001_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { werks zzusubnt mpis_unit_code mpis_alt_unit_descr uuid nric pernr endda begda persg persk } }'
+    pk: it0001-eb6f20f3-0a63-4685-a33d-fc8b54cb170a
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 7
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_in: ${uuid_list}}}) { zzpad_cname famst cdmaritalst_dte_create cdmaritalst_descr cdmaritalst_defunct_ind gbdat gblnd t005t_landx konfe cdreligion_dte_create cdreligion_descr cdreligion_defunct_ind zzdatrlg uuid nric endda begda } }'
+    pk: it0002-13e95972-e7f7-43ff-9126-97751500b348
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid_list:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid_list
+
+# 8
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzpad_cname: {_like: ${name}}}) { zzpad_cname famst cdmaritalst_dte_create cdmaritalst_descr cdmaritalst_defunct_ind gbdat gblnd t005t_landx konfe cdreligion_dte_create cdreligion_descr cdreligion_defunct_ind zzdatrlg uuid nric endda begda } }'
+    pk: it0002_main-4990aea8-b83c-4f4d-8e61-1af009b758ab
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        name:
+            pattern:
+            type:
+        todaydate:
+            pattern:
+            type:
+    required:
+        - name
+        - todaydate
+
+# 9
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzpad_cname: {_like: ${name}}, uuid: {_in: ${uuid_list}}}) { zzpad_cname famst cdmaritalst_dte_create cdmaritalst_descr cdmaritalst_defunct_ind gbdat gblnd t005t_landx konfe cdreligion_dte_create cdreligion_descr cdreligion_defunct_ind zzdatrlg uuid nric endda begda } }'
+    pk: it0002_main-e1852a0e-d330-49ac-a2da-8de4ef373399
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        name:
+            pattern:
+            type:
+        todaydate:
+            pattern:
+            type:
+        uuid_list:
+            pattern:
+            type:
+    required:
+        - name
+        - todaydate
+        - uuid_list
+
+# 10
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0006_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { stras pstlz bldng floor hsnmr anssa land1 locat ort01    begda endda pernr nric subty uuid inv_address_ind inv_alt_address_ind inv_alt_os_address_ind inv_os_address_ind adr03 } }'
+    pk: it0006-80ddf52b-ca22-4390-bf9b-e7536a6d45f7
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 11
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0009_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { bankl bankn bank_st aedtm uname begda endda pernr nric uuid } }'
+    pk: it0009-be7b17f8-a651-49d0-8b91-00568a3489df
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 12
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0021_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzfcnam famsa zznxtkin fgbdt fgbld t591s_sbttx t591s_spras pernr nric uuid endda begda zzhomeno zzcellno } }'
+    pk: it0021-be7b17f8-a651-49d0-8b91-00568a3489df
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 13
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0022_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}, order_by: {begda: desc}) { hsp hsa pernr nric uuid begda endda } }'
+    pk: it0022-1a513b6a-190f-411c-baa7-16ae0ba1541c
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 14
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0023_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzprevpos zzprevocpt  arbgb  branc t016t_brtxt pernr nric uuid begda endda } }'
+    pk: it0023-1dfdb630-c376-4bb7-ac64-4cfeca79716e
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 15
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0041_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, _or: [{dar01: {_eq: "01"}}, {dar02: {_eq: "01"}}, {dar03: {_eq: "01"}}, {dar04: {_eq: "01"}}, {dar05: {_eq: "01"}}, {dar06: {_eq: "01"}}, {dar07: {_eq: "01"}}, {dar08: {_eq: "01"}}, {dar09: {_eq: "01"}}, {dar10: {_eq: "01"}}, {dar11: {_eq: "01"}}, {dar12: {_eq: "01"}}, {dar13: {_eq: "01"}}, {dar14: {_eq: "01"}}, {dar15: {_eq: "01"}}, {dar16: {_eq: "01"}}, {dar17: {_eq: "01"}}, {dar18: {_eq: "01"}}, {dar19: {_eq: "01"}}, {dar20: {_eq: "01"}}, {dar21: {_eq: "01"}}, {dar22: {_eq: "01"}}, {dar23: {_eq: "01"}}, {dar24: {_eq: "01"}}]}) { pernr uuid nric begda endda dar01 dar02 dar03 dar04 dar05 dar06 dar07 dar08 dar09 dar10 dar11 dar12 dar13 dar14 dar15 dar16 dar17 dar18 dar19 dar20 dar21 dar22 dar23 dar24 dat01 dat02 dat03 dat04 dat05 dat06 dat07 dat08 dat09 dat10 dat11 dat12 dat13 dat14 dat15 dat16 dat17 dat18 dat19 dat20 dat21 dat22 dat23 dat24 } }'
+    pk: it0041-1e63fe22-1321-4f33-8b38-7087918dc127
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 16
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0077_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { racky cdrace_descr cdrace_dte_create cdrace_defunct_ind pernr nric uuid begda endda } }'
+    pk: it0077-d8b73136-f136-4d0d-b409-113ce1d4cede
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 17
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { usrid usrid_long subty pernr nric uuid begda endda } }'
+    pk: it0105-662f4176-6575-436f-8f9e-3a32b26d4248
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 18
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0185_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, cdctz_defunct_ind: {_eq: "N"}, uuid: {_eq: ${uuid}}}) { ictyp t5r06_ictxt  t5r06_ictyp t5r06_sprsl t5r06_molga zzrecsts cdctz_dte_create cdctz_descr cdctz_defunct_ind pernr nric uuid begda endda } }'
+    pk: it0185-c7ac19b1-5bb8-4c3f-85c3-f80707727212
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 19
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0412_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzbldng zzfloor zzhsnmr zzstras zzpstlz zzadr03 land1 perid pmres pernr nric uuid endda begda } }'
+    pk: it0412-bc5ba298-a41d-4c1b-b15c-375a8733daff
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 20
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0783_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { adtkey subty nric endda begda } }'
+    pk: it0783-fba1818e-20a0-4888-815e-673225157cb9
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 21
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9000_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzstrm cdstreamind_dte_create cdstreamind_descr cdstreamind_defunct_ind zzsts zzcomdate zzeducrse zzterm zzinstnam zzland1 t005t_landx zzdateup aedtm pernr nric uuid begda endda } }'
+    pk: it9000-b0323689-1d96-4e69-9c38-cac2806bd46c
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 22
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9016_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zztypos cur_tos zzcdate zzedate begda endda pernr nric uuid zpapa_tos_zzdesc zpapa_tos_zztypos zpapa_tos_zzendda zpapa_tos_zzbegda dte_tos_fr dte_tos_to liability_gp } }'
+    pk: it9016-5527601a-c93e-4b10-9317-cd69159eeace
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 23
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9090_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpesst zzpedate zzprdat pernr nric uuid begda endda } }'
+    pk: it9090-22a2525c-f066-4064-9d7a-9d3788bf8f98
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 24
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9100_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzacrd zzintk zzbatch zzextyp zzpoptyp zzexst zztor aedtm uname pernr nric uuid begda endda } }'
+    pk: it9100-62733d7a-e470-4504-b06e-579acc2ba764
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 25
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9102_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, subty: {_in: ${subty}}, uuid: {_eq: ${uuid}}}) { zzvalue zztot pernr nric uuid begda endda subty } }'
+    pk: it9102-9c9699f2-b605-4dd0-a14b-16c463f93c31
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        subty:
+            pattern:
+            type:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - subty
+        - todaydate
+        - uuid
+
+# 26
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9107_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzdef_begda zzdef_endda zzissue_date zzins zzloc_cos zzdef_stat defer pernr nric uuid subty begda endda } }'
+    pk: it9107-514a6568-338e-4e9f-9dff-382893bfa977
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 27
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9108_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zznapfa_award zzexm_date pernr nric uuid begda endda } }'
+    pk: it9108-f1db4876-befb-471f-9ce1-cb5953d4c5b4
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 28
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9120_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzintk zzenlist_date pernr nric uuid begda endda } }'
+    pk: it9120-c7b956c3-bd4d-4222-a8b2-0518cb90fb1f
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 29
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdctz_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdctzmain-7f599a8f-a702-4417-8639-9ffed83cd92a
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 30
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdempst_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdempstmain-b5225265-aaeb-42a4-b82b-21fd44d06f1e
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 31
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdmaritalst_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdmaritalstmain-323f7cbc-f090-4ea8-921c-8568b4f752d8
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 32
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdplacebirth_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdplacebirthmain-a44985b4-7f48-40d7-85b2-919756239081
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 33
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdrace_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdracemain-acbb535e-117b-4ed6-81cf-dd5701ad73bb
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 34
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdrelationship_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdrelationshipmain-ed01c84f-14e1-4755-8956-ae74e982151d
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 35
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdreligion_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdreligionmain-c0c031aa-dc9e-406f-9688-33b919aeb36f
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 36
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdstreamind_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdstreamindmain-7ddb74ab-212b-49c7-8f8a-518789f90e53
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 37
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ cdtos_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind tos_svc_gp tos_svc_sub_gp } }'
+    pk: cdtosmain-1ba21030-d3bc-4e93-bf7e-5b24fe418652
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 38
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9107_main(where: {zzdef_stat: {_in: ["01", "04", "07"]}, subty: {_in: ["04", "05", "06", "19"]}}) { uuid     zzissue_date zzdef_begda zzdef_endda zzins zzloc_cos zzdef_stat } } '
+    pk: it0002-8d79e61f-3e5b-4633-80b9-5f178ed92210
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 39
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9100_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzintk zzbatch zzextyp zzpoptyp aedtm zztor zzexst uname } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {zzval_type: {_eq: "01"}}) { zztag_code zztag_des }  }'
+    pk: it0002-8bf71a48-c796-4b30-b604-7d5817ea6732
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 40
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } }'
+    pk: it0002-178246ab-99dd-4511-b503-64b2eee0d326
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 41
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzval_type: {_eq: "01"}}) { zztag_code zztag_des } }'
+    pk: it0002-f6a94e37-065c-405e-b035-241bc5422af0
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 42
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9102_main(where: {uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzval_type: {_eq: "02"}}) { zztag_code zztag_des } }'
+    pk: it0002-06297b1a-dbe9-4864-aec8-46c2cd5a682c
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 43
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9102_main(where: {uuid: {_eq: ${uuid}}}) { zzvalue aedtm uname } it9107_main(where: {zzdef_stat: {_in: ["05"]}, subty: {_in: ["06"]}}) { uuid     zzdef_endda zzdef_stat } }'
+    pk: it0002-010a8e46-f421-4606-a5c6-5100d7d5332d
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 44
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric }  it9100_main(where: { uuid: {_eq: ${uuid}}}) { zzintk zzpoptyp zzexst } it9107_main(where: {zzdef_stat: {_in: ["05"]}, subty: {_in: ["04", "05", "06", "07"]}}) { nric uuid zzdef_endda zzdef_stat     } }'
+    pk: it0002-e9d4c5b5-0ee9-422d-9b99-167bb09e018e
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 45
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } }'
+    pk: it0002-5df72b55-3670-4373-887e-2009cb9e25a2
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 46
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname begda endda nric famst cdmaritalst_dte_create cdmaritalst_descr cdmaritalst_defunct_ind gbdat gblnd t005t_landx konfe cdreligion_dte_create cdreligion_descr cdreligion_defunct_ind zzdatrlg }  cdctz_main(where: {defunct_ind: {_eq: "N"}}) { code descr } it0006_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { anssa land1 stras adr03 pstlz bldng floor hsnmr begda endda nric subty } it0077_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { racky cdrace_descr cdrace_dte_create cdrace_defunct_ind pernr nric uuid begda endda } it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, subty: {_in: ["CELL", "9001", "9002"]}, uuid: {_eq: ${uuid}}}) { begda endda nric usrid subty } it0185_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { ictyp begda nric endda zzrecsts cdctz_descr } it0022_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { hsp hsa begda nric endda } it9000_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzstrm cdstreamind_descr cdstreamind_defunct_ind zzcomdate zzsts nric begda endda } it9016_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { liability_gp begda endda nric } it9100_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzacrd begda endda nric } it0001_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { werks t500p_name1 t500p_persa persg  t501t_ptext t501t_persg t501t_sprsl persk t503t_ptext t503t_persk btrtl t001p_btext t001p_werks t001p_btrtl nric begda endda } it0000_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { stat2 nric } it9090_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpesst zzpedate zzprdat pernr nric uuid begda endda } it9107_main(where: {uuid: {_eq: ${uuid}}}) { zzdef_begda zzdef_endda zzissue_date   nric } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}}) { zztag_code zztag_des zzval_type } }'
+    pk: it0002-3cc8980c-d0a0-4f30-86af-bd655f464f6a
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 47
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname konfe zzdatrlg famst begda endda nric } it0105_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { nric usrid subty begda endda. } it0006_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { inv_address_ind inv_alt_address_ind inv_alt_os_address_ind inv_os_address_ind } }'
+    pk: it0002-ac3ffc81-cad9-47fc-88c2-280f7d2aef37
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 48
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } }'
+    pk: it0002-be2ea112-2606-4377-8e34-95a97f9c90d0
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 49
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname begda endda nric famst gbdat gblnd t005t_landx konfe zzdatrlg }  cdctz_main(where: {defunct_ind: {_eq: "N"}}) { code descr } it0077_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { racky cdrace_descr cdrace_dte_create cdrace_defunct_ind pernr nric uuid begda endda } it0006_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { anssa land1 stras adr03 pstlz bldng hsnmr begda endda nric subty } it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, subty: {_in: ["CELL", "9001", "9002"]}, uuid: {_eq: ${uuid}}}) { begda endda nric usrid subty } it0185_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { ictyp begda nric endda } it0022_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { hsp hsa begda nric endda } it9000_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzstrm zzcomdate zzsts nric begda endda } it9016_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { liability_gp begda endda nric } it9100_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzacrd begda endda nric } it0001_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { werks t500p_name1 t500p_persa persg  t501t_ptext t501t_persg t501t_sprsl persk t503t_ptext t503t_persk btrtl t001p_btext t001p_werks t001p_btrtl nric begda endda } it0000_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { stat2 nric } it9090_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpesst zzpedate zzprdat pernr nric uuid begda endda } it9107_main(where: {uuid: {_eq: ${uuid}}}) { zzdef_begda zzdef_endda zzissue_date   nric } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}}) { zztag_code zztag_des } }'
+    pk: it0002-834eda47-e079-4801-bbfe-88d4bd9c75d1
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 50
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9090_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpesst zzmdate zzpedate zzprdat nric uuid begda endda } }'
+    pk: it9090-b29c898f-b754-45ba-a37b-2591bb9fa196
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 51
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname gbdat nric } it0783_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { begda endda adtkey } t77hrfpm_adtkeyt_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}}) { adtkey begda endda abbre langu } it9016_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zztypos cur_tos begda endda } it0001_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { werks t500p_name1  t500p_persa  persg  t501t_ptext  t501t_persg  t501t_sprsl persk t503t_ptext  t503t_persk  btrtl t001p_btext  t001p_werks  t001p_btrtl  uuid nric pernr begda endda_x000b_    zzvoc zzusubnt mpis_unit_code mpis_alt_unit_descr } it0000_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { stat2  uuid pernr nric } }'
+    pk: it0002-c98994c0-1ba5-4112-9510-3953b76a200e
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 52
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9000_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) {  nric } }'
+    pk: it9000-a7c37360-9413-4b49-8bc2-28d65b673e61
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 53
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric } it9000_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzsts     zzcomdate zzeducrse zzterm zzinstnam zzland1 zzdateup aedtm pernr nric begda endda_x000b_    uuid } }'
+    pk: it0002-fe15a02d-80c4-4a3c-8776-23c6c609ff1d
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 54
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0021_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzfcnam famsa zznxtkin uname fgbdt fgbld t591s_sbttx t591s_spras nric pernr endda begda zzhomeno zzcellno } cdctz_main(where: {defunct_ind: {_eq: "N"}}) { code descr } it0412_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzbldng zzfloor zzhsnmr zzstras zzpstlz zzadr03 land1 perid pmres pernr nric uuid endda begda } cdplacebirth_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } cdrelationship_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: it0105-aee494f9-454d-48c5-850e-013dbc2bbc1d
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 55
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{   cdplacebirth_main(where: {defunct_ind: {_eq: "N"}}) { code descr dte_create defunct_ind } }'
+    pk: cdplacebirth-482324f9-8fe4-4490-80a3-9e72b28fe4e1
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+    required: []
+
+# 56
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{   it9107_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { defer nric endda begda } it9108_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}}) { zznapfa_award zzexm_date nric endda begda } it9120_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzintk zzenlist_date zzreport_time pernr nric uuid begda endda } }'
+    pk: it0001-ae47e3ec-6be2-46eb-b820-e0f5ffc5ed50
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 57
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{   it0009_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { bankl bankn bank_st aedtm uname begda endda nric } }'
+    pk: it0009-92eacced-94fe-4660-b9cc-54a512626f58
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 58
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric }  it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzval_type: {_eq: "02"}, zztag_code: {_neq: "20"}}) { zztag_code zztag_des }  }'
+    pk: it0002-e096d175-b63f-4f3d-961c-2537659d1688
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 59
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_in: ${uuid}}}) { zzvalue subty uuid } it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_in: ${uuid}}}) { usrid subty uuid begda endda } }'
+    pk: it0002-60991f03-b9a5-4466-bf69-0bc8a58cc209
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 60
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_in: ${uuid}}}) { zzvalue subty uuid } it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_in: ${uuid}}}) { usrid subty uuid begda endda } }'
+    pk: it0002-d5d97e63-46a3-479a-8d65-51f11ae15013
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 61
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname nric endda begda } }'
+    pk: it0002-0f65c60c-92d6-49ba-bf68-6a0598858be1
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 62
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric }  it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { usrid subty nric begda endda } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, zzval_type: {_eq: "02"}, zztag_code: {_neq: "65"}}) { zzval_type zztag_code zztag_des }  it9107_main(where: {zzdef_stat: {_eq: "04"}}) { zzdef_endda zzdef_stat } }'
+    pk: it0002-9d7e9107-9d6b-48ea-9b5f-b74e3f8bc264
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 63
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0009_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, bankn: {_eq: ${bankn}}}) { nric } }'
+    pk: it0009-56aa364a-2424-4e2b-b7e5-8a7b11e81165
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        bankn:
+            pattern:
+            type:
+        todaydate:
+            pattern:
+            type:
+    required:
+        - bankn
+        - todaydate
+
+# 64
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric }  it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { usrid subty nric begda endda } }'
+    pk: it0002-65a749b2-ee74-4ac9-9627-35484d6d4997
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 65
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0006_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { nric anssa land1 bldng floor hsnmr stras adr03 pstlz nric begda endda } }'
+    pk: it0006-4d914444-b562-4f22-8ba0-b615f6ee95aa
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 66
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it9107_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { nric zzloc_cos zzissue_date zzdef_stat uname zzdef_endda zzlos zzos_land begda endda } it9102_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzvalue subty aedtm uname } ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}}) { zzval_type zztag_code zztag_des }  it0041_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, _or: [{dar01: {_eq: "01"}}, {dar02: {_eq: "01"}}, {dar03: {_eq: "01"}}, {dar04: {_eq: "01"}}, {dar05: {_eq: "01"}}, {dar06: {_eq: "01"}}, {dar07: {_eq: "01"}}, {dar08: {_eq: "01"}}, {dar09: {_eq: "01"}}, {dar10: {_eq: "01"}}, {dar11: {_eq: "01"}}, {dar12: {_eq: "01"}}, {dar13: {_eq: "01"}}, {dar14: {_eq: "01"}}, {dar15: {_eq: "01"}}, {dar16: {_eq: "01"}}, {dar17: {_eq: "01"}}, {dar18: {_eq: "01"}}, {dar19: {_eq: "01"}}, {dar20: {_eq: "01"}}, {dar21: {_eq: "01"}}, {dar22: {_eq: "01"}}, {dar23: {_eq: "01"}}, {dar24: {_eq: "01"}}]}) { pernr uuid nric begda endda dar01 dar02 dar03 dar04 dar05 dar06 dar07 dar08 dar09 dar10 dar11 dar12 dar13 dar14 dar15 dar16 dar17 dar18 dar19 dar20 dar21 dar22 dar23 dar24 dat01 dat02 dat03 dat04 dat05 dat06 dat07 dat08 dat09 dat10 dat11 dat12 dat13 dat14 dat15 dat16 dat17 dat18 dat19 dat20 dat21 dat22 dat23 dat24 } }'
+    pk: it9107-026347f7-e63f-4350-aa97-925152c154cf
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 67
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname uuid nric }  it0105_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { usrid subty nric begda endda } it9090_main(where: {begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpesst nric begda endda } it0041_main(where: {uuid: {_eq: ${uuid}}, begda: {_lte: ${todaydate}}, endda: {_gte: ${todaydate}}, _or: [{dar01: {_eq: "01"}}, {dar02: {_eq: "01"}}, {dar03: {_eq: "01"}}, {dar04: {_eq: "01"}}, {dar05: {_eq: "01"}}, {dar06: {_eq: "01"}}, {dar07: {_eq: "01"}}, {dar08: {_eq: "01"}}, {dar09: {_eq: "01"}}, {dar10: {_eq: "01"}}, {dar11: {_eq: "01"}}, {dar12: {_eq: "01"}}, {dar13: {_eq: "01"}}, {dar14: {_eq: "01"}}, {dar15: {_eq: "01"}}, {dar16: {_eq: "01"}}, {dar17: {_eq: "01"}}, {dar18: {_eq: "01"}}, {dar19: {_eq: "01"}}, {dar20: {_eq: "01"}}, {dar21: {_eq: "01"}}, {dar22: {_eq: "01"}}, {dar23: {_eq: "01"}}, {dar24: {_eq: "01"}}]}) { pernr uuid nric begda endda dar01 dar02 dar03 dar04 dar05 dar06 dar07 dar08 dar09 dar10 dar11 dar12 dar13 dar14 dar15 dar16 dar17 dar18 dar19 dar20 dar21 dar22 dar23 dar24 dat01 dat02 dat03 dat04 dat05 dat06 dat07 dat08 dat09 dat10 dat11 dat12 dat13 dat14 dat15 dat16 dat17 dat18 dat19 dat20 dat21 dat22 dat23 dat24 } }'
+    pk: it0002-abb286c4-bbe3-4a70-ab4f-0071db3afbdb
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 68
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ it0002_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}, uuid: {_eq: ${uuid}}}) { zzpad_cname nric endda begda } }'
+    pk: it0002-2fd71a18-005b-40d0-bc8e-8bf4eca27e49
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+        uuid:
+            pattern:
+            type:
+    required:
+        - todaydate
+        - uuid
+
+# 69
+-   pkstatus: true
+    dataSource: hasura
+    querytemplate: '{ ympapa_tag_value_main(where: {endda: {_gte: ${todaydate}}, begda: {_lte: ${todaydate}}}) { zztag_code zztag_des zzval_type begda endda } }'
+    pk: ympapa_tag-4ba23bef-a669-4abd-85f6-a28d18920360
+    appid: svc-onens-bizprac-nsreg
+    paramValuesSchema:
+        todaydate:
+            pattern:
+            type:
+    required:
+        - todaydate

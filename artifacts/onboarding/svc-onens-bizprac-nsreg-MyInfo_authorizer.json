@@ -1,0 +1,41 @@
+{
+    "myinfo-authorizer-prod": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "pk": {
+                        "S": "svc-onens-bizprac-nsreg"
+                    },
+                    "attributes": {
+                        "L": [
+                            {
+                                "S": "email"
+                            },
+                            {
+                                "S": "mobileno"
+                            },
+                            {
+                                "S": "childrenbirthrecords.birthcertno"
+                            },
+                            {
+                                "S": "childrenbirthrecords.name"
+                            },
+                            {
+                                "S": "childrenbirthrecords.sex"
+                            },
+                            {
+                                "S": "childrenbirthrecords.dob"
+                            }
+                        ]
+                    },
+                    "redirect_uri": {
+                        "S": "https://ns.gov.sg/web/pre-enlistee/nsreg/#/my-info-page"
+                    },
+                    "authenticated_flow": {
+                        "BOOL": true
+                    }
+                }
+            }
+        }
+    ]
+}

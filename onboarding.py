@@ -49,7 +49,7 @@ if sheetlist != '🚫 No Services Detected':
     if 'SFS' in sheetlist:
         sfs_main(path, app_name, env)
     if 'MyInfo' in sheetlist:
-        myinfo_main(path, app_name)
+        myinfo_main(path, app_name, env)
     if 'Survey' in sheetlist:
         survey_main(path, app_name)
     print('''
