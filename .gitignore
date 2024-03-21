@@ -1,5 +1,6 @@
 __pycache__
 *.pyc
+.DS_Store
 artifacts/onboarding/*
 
 !artifacts/onboarding/README.md
