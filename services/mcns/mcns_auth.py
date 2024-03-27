@@ -32,7 +32,7 @@ def mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, 
             "PutRequest": {{
                 "Item": {{
                     "pk": {{
-                        "S": "{app_name}#{sender}#{template_id}"
+                        "S": "{app_name}#{sender.strip()}#{template_id.strip()}"
                     }},
                     "subject": {{
                         "S": "{subject}"
