@@ -2,5 +2,6 @@ __pycache__
 *.pyc
 .DS_Store
 artifacts/onboarding/*
+*.xlsx
 
 !artifacts/onboarding/README.md

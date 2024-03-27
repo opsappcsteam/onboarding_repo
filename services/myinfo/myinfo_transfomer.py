@@ -15,8 +15,11 @@ def myinfo_transformer(myinfo_content, env):
     }
 
 
-    dynamodb_config_items = dynamodb_config.get("myinfo-authorizer-prod")[0].get("PutRequest").get("Item")
+    dynamodb_config_items = dynamodb_config.get(f'myinfo-authorizer-{env}')[0].get("PutRequest").get("Item")
     # print(myinfo_content)
+    if myinfo_content is None:
+        return None
+
     json_data = json.loads(myinfo_content)
     # print(json_data)
     for key, value in json_data[0].items():
@@ -32,7 +35,6 @@ def myinfo_transformer(myinfo_content, env):
 def transform_attributes(dynamodb_config_items, attributes, key):
     attribute_list = []
     attribute_dict = {}
-    print(attributes)
     for attribute in attributes:
         attribute_list.append(
             { "S": attribute }

@@ -12,6 +12,5 @@ def myinfo_main(excel_path, app_name, env):
     authenticated_flow = authenticated_flow_converter(myinfo_array(myinfo_sheet)[0].lower())
     myinfo_content = myinfo_authorizer_content(app_name, attributes_array, redirect_uri, authenticated_flow)
     transformed_myinfo_content = myinfo_transformer(myinfo_content,env)
-    print(transformed_myinfo_content)
     onboarding_file_generation(app_name, 'MyInfo', 'Authorizer', transformed_myinfo_content, '.json', '')
     # add function here pass env in function
