@@ -35,7 +35,7 @@ def mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, 
                         "S": "{app_name}#{sender.strip()}#{template_id.strip()}"
                     }},
                     "subject": {{
-                        "S": "{subject}"
+                        "S": "{subject.strip()}"
                     }}'''
     if dynamic_value_array != []:
         template_value_schema = f''',
@@ -45,7 +45,7 @@ def mcns_authorizer_entry(app_name, template_id, channel_type, sender, subject, 
         mcns_authorizer_entry += template_value_schema
     mcns_authorizer_entry += f''',
                     "template": {{
-                        "S": "{template}"
+                        "S": "{template.strip()}"
                     }}'''
     if "templateValueSchema" in mcns_authorizer_entry:
         regex_schema = f''',
